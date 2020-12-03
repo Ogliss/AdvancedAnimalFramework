@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>Advanced Animal Framework</name>
+	<author>Mingji Lim aka WalkingProblem, updated by Ogliss</author>
+	<url>http://walkingproblem.com</url>
+	<supportedVersions>
+	<li>1.2</li>
+	</supportedVersions>
+	<packageId>walkingproblem.aaf</packageId>
+	<description>Unoffical Temp update for WalkingProblem's Advanced Animal Framework for RimWorld 1.2
+	with added support for RF fishing spots and Quarry use.
+	using the same packageId as the original. https://steamcommunity.com/sharedfiles/filedetails/?id=1336991209
+
+	This is the core framework that allows animals to carry weapons, do various work and for special autonomous animal-like vehicles. Does not add content on its own.</description>
+</ModMetaData>

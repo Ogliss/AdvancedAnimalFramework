@@ -1,0 +1,10 @@
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdMech-Xeno-AHR-Orkz\1.2\Source\AnimalWeaponFramework\AnimalWeaponFramework\bin\Debug\AnimalWeaponFramework.dll
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdMech-Xeno-AHR-Orkz\1.2\Source\AnimalWeaponFramework\AnimalWeaponFramework\bin\Debug\AnimalWeaponFramework.pdb
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdMech-Xeno-AHR-Orkz\1.2\Source\AnimalWeaponFramework\AnimalWeaponFramework\bin\Debug\0Harmony.dll
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdMech-Xeno-AHR-Orkz\1.2\Source\AnimalWeaponFramework\AnimalWeaponFramework\obj\Debug\AnimalWeaponFramework.csprojAssemblyReference.cache
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdMech-Xeno-AHR-Orkz\1.2\Source\AnimalWeaponFramework\AnimalWeaponFramework\obj\Debug\AnimalWeaponFramework.csproj.CoreCompileInputs.cache
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdMech-Xeno-AHR-Orkz\1.2\Source\AnimalWeaponFramework\AnimalWeaponFramework\obj\Debug\AnimalWeaponFramework.csproj.CopyComplete
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdMech-Xeno-AHR-Orkz\1.2\Source\AnimalWeaponFramework\AnimalWeaponFramework\obj\Debug\AnimalWeaponFramework.dll
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdMech-Xeno-AHR-Orkz\1.2\Source\AnimalWeaponFramework\AnimalWeaponFramework\obj\Debug\AnimalWeaponFramework.pdb
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdMech-Xeno-AHR-Orkz\1.2\Assemblies\AnimalWeaponFramework.dll
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdMech-Xeno-AHR-Orkz\1.2\Assemblies\AnimalWeaponFramework.pdb

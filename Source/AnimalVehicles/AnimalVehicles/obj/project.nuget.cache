@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "ka26l0uoTE6Go4kUTlboyElzbuw0Q/tR+vp8jFt7zc6cqmPZwXvDbd5S0/c1WGrkWCUOFmJnQjC/5tOiDGJnAw==",
+  "success": true,
+  "projectFilePath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld\\Mods\\AdMech-Xeno-AHR-Orkz\\1.2\\Source\\AnimalVehicles\\AnimalVehicles\\AnimalVehicles.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\krafs.rimworld.ref\\1.2.2753\\krafs.rimworld.ref.1.2.2753.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\lib.harmony\\2.0.2\\lib.harmony.2.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "yyIFnyYTnyol/swzFcbprA16fQMb8lp+eX41NthvcLAqGTBQ88YLh+pXDkVAE9nHCxrNoSy2n5iD0o1yDKed+w==",
+  "success": true,
+  "projectFilePath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld\\Mods\\AdMech-Xeno-AHR-Orkz\\1.2\\Source\\AnimalWeaponFramework\\AnimalWeaponFramework\\AnimalWeaponFramework.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\krafs.rimworld.ref\\1.2.2753\\krafs.rimworld.ref.1.2.2753.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\lib.harmony\\2.0.2\\lib.harmony.2.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}
