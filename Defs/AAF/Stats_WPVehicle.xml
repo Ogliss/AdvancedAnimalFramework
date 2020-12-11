@@ -6,5 +6,6 @@
 		<category>BasicsPawn</category>
 		<defaultBaseValue>0</defaultBaseValue>
 		<toStringStyle>FloatOne</toStringStyle>
+    <showIfUndefined>false</showIfUndefined>
 	</StatDef>
 </Defs>

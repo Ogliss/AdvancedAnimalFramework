@@ -41,6 +41,22 @@ namespace AnimalJobsPatch
 			HarmonyMethod prefix5 = new HarmonyMethod(typeof(HarmonyPatches).GetMethod("HandleBlockingThingJob_Prefix"));
 
 
+			bool Fishin = ModsConfig.ActiveModsInLoadOrder.Any((ModMetaData m) => m.PackageIdPlayerFacing == "firefoxpdm.RainbeausFishing");
+            if (Fishin)
+            {
+				FishingPatch(harmony);
+			}
+			harmony.Patch(original, prefix, null, null, null);
+			harmony.Patch(original2, prefix2, null, null, null);
+			harmony.Patch(original3, prefix3, null, null, null);
+			harmony.Patch(original4, prefix4, null, null, null);
+			harmony.Patch(original5, prefix5, null, null, null);
+		}
+
+
+		public static void FishingPatch(Harmony harmony)
+        {
+
 			MethodInfo method3 = AccessTools.TypeByName("RBB_Code.JobDriver_CatchFish").GetMethod("MakeNewToils", BindingFlags.NonPublic | BindingFlags.Instance);
 			MethodInfo method4 = typeof(HarmonyPatches).GetMethod("JobDriver_CatchFish_Prefix");
 			bool flag3 = method3 == null;
@@ -57,13 +73,7 @@ namespace AnimalJobsPatch
 				harmony.Patch(method5, prefix: new HarmonyMethod(method6));
 			}
 
-			harmony.Patch(original, prefix, null, null, null);
-			harmony.Patch(original2, prefix2, null, null, null);
-			harmony.Patch(original3, prefix3, null, null, null);
-			harmony.Patch(original4, prefix4, null, null, null);
-			harmony.Patch(original5, prefix5, null, null, null);
 		}
-
 		// Token: 0x060000EA RID: 234 RVA: 0x00008318 File Offset: 0x00006518
 		public static void CanConstruct_Prefix(ref bool __result, Thing t, Pawn p, bool checkSkills = true, bool forced = false)
 		{
