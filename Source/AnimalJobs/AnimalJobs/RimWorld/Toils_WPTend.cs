@@ -1,9 +1,10 @@
-﻿using System;
+﻿using RimWorld;
+using System;
 using UnityEngine;
 using Verse;
 using Verse.AI;
 
-namespace RimWorld
+namespace AnimalJobs
 {
 	// Token: 0x0200001B RID: 27
 	public class Toils_WPTend

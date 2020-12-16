@@ -1,9 +1,10 @@
-﻿using System;
+﻿using RimWorld;
+using System;
 using System.Collections.Generic;
 using Verse;
 using Verse.AI;
 
-namespace RimWorld
+namespace AnimalJobs
 {
 	// Token: 0x02000023 RID: 35
 	public abstract class WorkGiver_WPGatherAnimalBodyResources : WorkGiver_Scanner

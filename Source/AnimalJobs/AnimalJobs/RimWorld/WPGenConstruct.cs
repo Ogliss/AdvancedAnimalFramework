@@ -1,9 +1,10 @@
-﻿using System;
+﻿using RimWorld;
+using System;
 using System.Collections.Generic;
 using Verse;
 using Verse.AI;
 
-namespace RimWorld
+namespace AnimalJobs
 {
 	// Token: 0x0200002D RID: 45
 	public static class WPGenConstruct

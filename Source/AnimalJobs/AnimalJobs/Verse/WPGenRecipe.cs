@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using RimWorld;
 using UnityEngine;
+using Verse;
 
-namespace Verse
+namespace AnimalJobs
 {
 	// Token: 0x0200000A RID: 10
 	public static class WPGenRecipe

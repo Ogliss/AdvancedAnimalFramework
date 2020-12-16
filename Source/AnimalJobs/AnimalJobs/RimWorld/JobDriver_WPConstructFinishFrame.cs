@@ -1,10 +1,11 @@
-﻿using System;
+﻿using RimWorld;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Verse;
 using Verse.AI;
 
-namespace RimWorld
+namespace AnimalJobs
 {
 	// Token: 0x0200000F RID: 15
 	public class JobDriver_WPConstructFinishFrame : JobDriver

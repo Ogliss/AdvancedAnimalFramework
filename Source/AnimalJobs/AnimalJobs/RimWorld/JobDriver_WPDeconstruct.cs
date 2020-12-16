@@ -1,8 +1,9 @@
-﻿using System;
+﻿using RimWorld;
+using System;
 using UnityEngine;
 using Verse;
 
-namespace RimWorld
+namespace AnimalJobs
 {
 	// Token: 0x02000010 RID: 16
 	public class JobDriver_WPDeconstruct : JobDriver_WPRemoveBuilding

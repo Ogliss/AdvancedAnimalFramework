@@ -1,7 +1,8 @@
-﻿using System;
+﻿using RimWorld;
+using System;
 using Verse;
 
-namespace RimWorld
+namespace AnimalJobs
 {
 	// Token: 0x02000020 RID: 32
 	public class WorkGiver_WPDeconstruct : WorkGiver_WPRemoveBuilding

@@ -1,7 +1,8 @@
-﻿using System;
+﻿using RimWorld;
+using System;
 using Verse;
 
-namespace RimWorld
+namespace AnimalJobs
 {
 	// Token: 0x02000028 RID: 40
 	public class WorkGiver_WPShear : WorkGiver_WPGatherAnimalBodyResources

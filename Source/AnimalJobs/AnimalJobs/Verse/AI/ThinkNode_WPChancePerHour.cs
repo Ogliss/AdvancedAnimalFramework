@@ -1,6 +1,8 @@
 ﻿using System;
+using Verse;
+using Verse.AI;
 
-namespace Verse.AI
+namespace AnimalJobs.AI
 {
 	// Token: 0x0200000C RID: 12
 	public abstract class ThinkNode_WPChancePerHour : ThinkNode_Priority

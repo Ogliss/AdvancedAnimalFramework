@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RimWorld;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using UnityEngine;
 using Verse;
 using Verse.Sound;
 
-namespace RimWorld
+namespace AnimalJobs
 {
 	// Token: 0x0200002C RID: 44
 	[StaticConstructorOnStartup]

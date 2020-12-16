@@ -1,6 +1,8 @@
 ﻿using System;
+using Verse;
+using Verse.AI;
 
-namespace Verse.AI
+namespace AnimalJobs.AI
 {
 	// Token: 0x0200000D RID: 13
 	public class ThinkNode_WPChancePerHour_Constant : ThinkNode_WPChancePerHour
@@ -13,13 +15,12 @@ namespace Verse.AI
 			return thinkNode_WPChancePerHour_Constant;
 		}
 
-		// Token: 0x0600002B RID: 43 RVA: 0x00003820 File Offset: 0x00001A20
-		protected override float MtbHours(Pawn Pawn)
+        protected override float MtbHours(Pawn pawn)
 		{
 			return this.mtbHours;
 		}
 
-		// Token: 0x04000009 RID: 9
-		private float mtbHours = 1f;
+        // Token: 0x04000009 RID: 9
+        private float mtbHours = 1f;
 	}
 }

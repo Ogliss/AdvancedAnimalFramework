@@ -1,9 +1,10 @@
-﻿using System;
+﻿using RimWorld;
+using System;
 using System.Collections.Generic;
 using Verse;
 using Verse.AI;
 
-namespace RimWorld
+namespace AnimalJobs
 {
 	// Token: 0x02000014 RID: 20
 	public class JobDriver_WPOperateDeepDrill : JobDriver

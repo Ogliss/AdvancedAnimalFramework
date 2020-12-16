@@ -1,9 +1,10 @@
-﻿using System;
+﻿using RimWorld;
+using System;
 using System.Collections.Generic;
 using Verse;
 using Verse.AI;
 
-namespace RimWorld
+namespace AnimalJobs
 {
 	// Token: 0x02000024 RID: 36
 	public abstract class WorkGiver_WPGrower : WorkGiver_Scanner
@@ -18,8 +19,17 @@ namespace RimWorld
 			}
 		}
 
-		// Token: 0x060000A4 RID: 164 RVA: 0x000059F8 File Offset: 0x00003BF8
-		protected virtual bool ExtraRequirements(IPlantToGrowSettable settable, Pawn pawn)
+        public override bool ShouldSkip(Pawn pawn, bool forced = false)
+        {
+            if (!pawn.RaceProps.Animal)
+            {
+				return true;
+			}
+			return base.ShouldSkip(pawn, forced);
+		}
+
+        // Token: 0x060000A4 RID: 164 RVA: 0x000059F8 File Offset: 0x00003BF8
+        protected virtual bool ExtraRequirements(IPlantToGrowSettable settable, Pawn pawn)
 		{
 			return true;
 		}
@@ -106,7 +116,14 @@ namespace RimWorld
 			return result;
 		}
 
-		// Token: 0x04000021 RID: 33
-		protected static ThingDef wantedPlantDef;
+        public override Job JobOnCell(Pawn pawn, IntVec3 cell, bool forced = false)
+        {
+            return base.JobOnCell(pawn, cell, forced);
+        }
+
+        // Token: 0x04000021 RID: 33
+        protected static ThingDef wantedPlantDef;
 	}
+
+	
 }

@@ -1,8 +1,9 @@
 ﻿using System;
 using RimWorld;
+using Verse;
 using Verse.AI;
 
-namespace Verse
+namespace AnimalJobs
 {
 	// Token: 0x02000003 RID: 3
 	public class JobGiver_WPCleanFilth : ThinkNode_JobGiver

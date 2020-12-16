@@ -1,8 +1,9 @@
-﻿using System;
+﻿using RimWorld;
+using System;
 using Verse;
 using Verse.AI;
 
-namespace RimWorld
+namespace AnimalJobs
 {
 	// Token: 0x0200002B RID: 43
 	public class WorkGiver_WPVisitSickPawn : WorkGiver_Scanner

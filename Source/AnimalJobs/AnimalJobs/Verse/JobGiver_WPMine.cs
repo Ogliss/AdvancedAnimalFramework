@@ -1,8 +1,9 @@
 ﻿using System;
 using RimWorld;
+using Verse;
 using Verse.AI;
 
-namespace Verse
+namespace AnimalJobs
 {
 	// Token: 0x02000007 RID: 7
 	public class JobGiver_WPMine : ThinkNode_JobGiver

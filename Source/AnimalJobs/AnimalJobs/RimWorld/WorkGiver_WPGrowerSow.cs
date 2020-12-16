@@ -1,9 +1,10 @@
-﻿using System;
+﻿using RimWorld;
+using System;
 using System.Collections.Generic;
 using Verse;
 using Verse.AI;
 
-namespace RimWorld
+namespace AnimalJobs
 {
 	// Token: 0x02000025 RID: 37
 	public class WorkGiver_WPGrowerSow : WorkGiver_WPGrower
@@ -18,8 +19,17 @@ namespace RimWorld
 			}
 		}
 
-		// Token: 0x060000A9 RID: 169 RVA: 0x00005A6F File Offset: 0x00003C6F
-		public static void Reset()
+        public override bool ShouldSkip(Pawn pawn, bool forced = false)
+        {
+            if (!pawn.RaceProps.Animal)
+            {
+				return true;
+            }
+            return base.ShouldSkip(pawn, forced);
+        }
+
+        // Token: 0x060000A9 RID: 169 RVA: 0x00005A6F File Offset: 0x00003C6F
+        public static void Reset()
 		{
 			WorkGiver_WPGrowerSow.CantSowCavePlantBecauseOfLightTrans = "CantSowCavePlantBecauseOfLight".Translate();
 			WorkGiver_WPGrowerSow.CantSowCavePlantBecauseUnroofedTrans = "CantSowCavePlantBecauseUnroofed".Translate();

@@ -1,8 +1,9 @@
 ﻿using System;
 using RimWorld;
+using Verse;
 using Verse.AI;
 
-namespace Verse
+namespace AnimalJobs
 {
 	// Token: 0x02000008 RID: 8
 	public class JobGiver_WPPlantHarvest : ThinkNode_JobGiver

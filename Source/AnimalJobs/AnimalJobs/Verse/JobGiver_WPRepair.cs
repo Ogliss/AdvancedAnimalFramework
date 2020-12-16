@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using RimWorld;
+using Verse;
 using Verse.AI;
 
-namespace Verse
+namespace AnimalJobs
 {
 	// Token: 0x02000009 RID: 9
 	public class JobGiver_WPRepair : ThinkNode_JobGiver

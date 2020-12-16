@@ -1,7 +1,7 @@
 ﻿using System;
 using Verse;
 
-namespace RimWorld
+namespace AnimalJobs
 {
 	// Token: 0x0200002A RID: 42
 	public class WorkGiver_WPTendOther : WorkGiver_WPTend
