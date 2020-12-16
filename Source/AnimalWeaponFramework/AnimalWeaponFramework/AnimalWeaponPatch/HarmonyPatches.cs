@@ -5,7 +5,7 @@ using HarmonyLib;
 using RimWorld;
 using Verse;
 
-namespace AnimalWeaponPatch
+namespace AnimalWeapons
 {
 	// Token: 0x02000019 RID: 25
 	[StaticConstructorOnStartup]

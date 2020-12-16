@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Verse;
 using Verse.Sound;
+using RimWorld;
 
-namespace RimWorld
+namespace AnimalWeapons
 {
-	// Token: 0x0200000C RID: 12
-	internal class Recipe_WPEquipWeaponOnAnimal : RecipeWorker
+    // Token: 0x0200000C RID: 12
+    internal class Recipe_WPEquipWeaponOnAnimal : RecipeWorker
 	{
 		// Token: 0x0600002F RID: 47 RVA: 0x000038F0 File Offset: 0x00001AF0
 		public override void ApplyOnPawn(Pawn pawn, BodyPartRecord part, Pawn billDoer, List<Thing> ingredients, Bill bill)

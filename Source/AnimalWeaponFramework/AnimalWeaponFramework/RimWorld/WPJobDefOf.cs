@@ -1,10 +1,10 @@
-﻿using System;
-using Verse;
+﻿using Verse;
+using RimWorld;
 
-namespace RimWorld
+namespace AnimalWeapons
 {
-	// Token: 0x02000015 RID: 21
-	[DefOf]
+    // Token: 0x02000015 RID: 21
+    [DefOf]
 	public static class WPJobDefOf
 	{
 		// Token: 0x04000018 RID: 24

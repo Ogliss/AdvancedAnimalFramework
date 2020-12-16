@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Verse;
+using Verse.AI;
 using Verse.Sound;
 
-namespace Verse.AI
+namespace AnimalWeapons
 {
 	// Token: 0x02000017 RID: 23
 	public class JobDriver_WPAnimalWeaponEquip : JobDriver

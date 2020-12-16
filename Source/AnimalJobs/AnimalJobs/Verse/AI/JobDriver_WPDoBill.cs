@@ -5,7 +5,7 @@ using UnityEngine;
 using Verse;
 using Verse.AI;
 
-namespace AnimalJobs.AI
+namespace AnimalJobs
 {
 	// Token: 0x0200000B RID: 11
 	public class JobDriver_WPDoBill : JobDriver

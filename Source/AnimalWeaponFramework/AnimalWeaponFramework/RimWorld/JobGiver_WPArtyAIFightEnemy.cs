@@ -1,10 +1,11 @@
-﻿using System;
+﻿using RimWorld;
+using System;
 using System.Collections.Generic;
 using Verse;
 using Verse.AI;
 using Verse.AI.Group;
 
-namespace RimWorld
+namespace AnimalWeapons
 {
 	// Token: 0x02000007 RID: 7
 	public abstract class JobGiver_WPArtyAIFightEnemy : ThinkNode_JobGiver

@@ -1,11 +1,11 @@
-﻿using System;
-using Verse;
+﻿using Verse;
 using Verse.AI;
+using RimWorld;
 
-namespace RimWorld
+namespace AnimalWeapons
 {
-	// Token: 0x02000011 RID: 17
-	public class ThinkNode_ConditionalWPLowHealthPanicExitMap : ThinkNode_Conditional
+    // Token: 0x02000011 RID: 17
+    public class ThinkNode_ConditionalWPLowHealthPanicExitMap : ThinkNode_Conditional
 	{
 		// Token: 0x0600003A RID: 58 RVA: 0x00003C90 File Offset: 0x00001E90
 		public override ThinkNode DeepCopy(bool resolve = true)

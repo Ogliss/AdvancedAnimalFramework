@@ -1,11 +1,11 @@
-﻿using System;
-using Verse;
+﻿using Verse;
 using Verse.AI;
+using RimWorld;
 
-namespace RimWorld
+namespace AnimalVehicle
 {
-	// Token: 0x02000004 RID: 4
-	public class JobGiver_WalkblemSelfDestruct : ThinkNode_JobGiver
+    // Token: 0x02000004 RID: 4
+    public class JobGiver_WalkblemSelfDestruct : ThinkNode_JobGiver
 	{
 		// Token: 0x06000008 RID: 8 RVA: 0x00002390 File Offset: 0x00000590
 		protected override Job TryGiveJob(Pawn pawn)

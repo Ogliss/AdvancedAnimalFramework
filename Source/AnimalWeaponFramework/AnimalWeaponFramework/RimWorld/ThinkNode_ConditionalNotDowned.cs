@@ -2,7 +2,7 @@
 using Verse;
 using Verse.AI;
 
-namespace RimWorld
+namespace AnimalWeapons
 {
 	// Token: 0x0200000E RID: 14
 	public class ThinkNode_ConditionalNotDowned : ThinkNode_Conditional

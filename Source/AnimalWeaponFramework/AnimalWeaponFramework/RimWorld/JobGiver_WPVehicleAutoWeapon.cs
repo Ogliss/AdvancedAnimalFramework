@@ -1,8 +1,9 @@
-﻿using System;
+﻿using RimWorld;
+using System;
 using Verse;
 using Verse.AI;
 
-namespace RimWorld
+namespace AnimalWeapons
 {
 	// Token: 0x0200000B RID: 11
 	public class JobGiver_WPVehicleAutoWeapon : ThinkNode_JobGiver

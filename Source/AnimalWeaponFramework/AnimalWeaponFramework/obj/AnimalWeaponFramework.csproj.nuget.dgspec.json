@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld\\Mods\\AdMech-Xeno-AHR-Orkz\\1.2\\Source\\AnimalWeaponFramework\\AnimalWeaponFramework\\AnimalWeaponFramework.csproj": {}
+    "C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld\\Mods\\AdvancedAnimalFramework\\Source\\AnimalWeaponFramework\\AnimalWeaponFramework\\AnimalWeaponFramework.csproj": {}
   },
   "projects": {
-    "C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld\\Mods\\AdMech-Xeno-AHR-Orkz\\1.2\\Source\\AnimalWeaponFramework\\AnimalWeaponFramework\\AnimalWeaponFramework.csproj": {
+    "C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld\\Mods\\AdvancedAnimalFramework\\Source\\AnimalWeaponFramework\\AnimalWeaponFramework\\AnimalWeaponFramework.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld\\Mods\\AdMech-Xeno-AHR-Orkz\\1.2\\Source\\AnimalWeaponFramework\\AnimalWeaponFramework\\AnimalWeaponFramework.csproj",
+        "projectUniqueName": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld\\Mods\\AdvancedAnimalFramework\\Source\\AnimalWeaponFramework\\AnimalWeaponFramework\\AnimalWeaponFramework.csproj",
         "projectName": "AnimalWeaponFramework",
-        "projectPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld\\Mods\\AdMech-Xeno-AHR-Orkz\\1.2\\Source\\AnimalWeaponFramework\\AnimalWeaponFramework\\AnimalWeaponFramework.csproj",
+        "projectPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld\\Mods\\AdvancedAnimalFramework\\Source\\AnimalWeaponFramework\\AnimalWeaponFramework\\AnimalWeaponFramework.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld\\Mods\\AdMech-Xeno-AHR-Orkz\\1.2\\Source\\AnimalWeaponFramework\\AnimalWeaponFramework\\obj\\",
+        "outputPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld\\Mods\\AdvancedAnimalFramework\\Source\\AnimalWeaponFramework\\AnimalWeaponFramework\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [

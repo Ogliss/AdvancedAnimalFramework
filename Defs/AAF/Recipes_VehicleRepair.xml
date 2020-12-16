@@ -13,7 +13,7 @@
 		<defName>WPVehicleRepair</defName>
 		<label>repair all damages</label>
 		<description>Fully repair a vehicle</description>
-		<workerClass>Recipe_WPRepairVehicle</workerClass>
+		<workerClass>AnimalVehicle.Recipe_WPRepairVehicle</workerClass>
 		<jobString>Repairing vehicle.</jobString>
 		<workAmount>2000</workAmount>
 		<hideBodyPartNames>true</hideBodyPartNames>
@@ -49,7 +49,7 @@
 		<defName>WPEquipWeaponOnAnimal</defName>
 		<label>equip weapon</label>
 		<description>Give an animal a weapon</description>
-		<workerClass>Recipe_WPEquipWeaponOnAnimal</workerClass>
+		<workerClass>AnimalWeapons.Recipe_WPEquipWeaponOnAnimal</workerClass>
 		<jobString>Equiping weapon.</jobString>
 		<workAmount>100</workAmount>
 		<hideBodyPartNames>true</hideBodyPartNames>
@@ -78,7 +78,7 @@
 		<defName>WPRemoveWeaponOnAnimal</defName>
 		<label>remove weapon</label>
 		<description>Remove animal's weapon</description>
-		<workerClass>Recipe_WPRemoveWeaponOnAnimal</workerClass>
+		<workerClass>AnimalWeapons.Recipe_WPRemoveWeaponOnAnimal</workerClass>
 		<jobString>Removing weapon.</jobString>
 		<workAmount>100</workAmount>
 		<hideBodyPartNames>true</hideBodyPartNames>

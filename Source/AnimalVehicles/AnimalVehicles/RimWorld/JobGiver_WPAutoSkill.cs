@@ -1,11 +1,11 @@
-﻿using System;
-using Verse;
+﻿using Verse;
 using Verse.AI;
+using RimWorld;
 
-namespace RimWorld
+namespace AnimalVehicle
 {
-	// Token: 0x02000005 RID: 5
-	public class JobGiver_WPAutoSkill : ThinkNode_JobGiver
+    // Token: 0x02000005 RID: 5
+    public class JobGiver_WPAutoSkill : ThinkNode_JobGiver
 	{
 		// Token: 0x0600000A RID: 10 RVA: 0x000023F8 File Offset: 0x000005F8
 		protected override Job TryGiveJob(Pawn pawn)

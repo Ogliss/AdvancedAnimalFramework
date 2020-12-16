@@ -1,11 +1,11 @@
-﻿using System;
-using Verse;
+﻿using Verse;
 using Verse.AI;
+using RimWorld;
 
-namespace RimWorld
+namespace AnimalWeapons
 {
-	// Token: 0x02000013 RID: 19
-	public class ThinkNode_ConditionalWPNotOfPlayerFaction : ThinkNode_Conditional
+    // Token: 0x02000013 RID: 19
+    public class ThinkNode_ConditionalWPNotOfPlayerFaction : ThinkNode_Conditional
 	{
 		// Token: 0x06000040 RID: 64 RVA: 0x00003D84 File Offset: 0x00001F84
 		protected override bool Satisfied(Pawn pawn)

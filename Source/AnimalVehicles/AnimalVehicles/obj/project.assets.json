@@ -521,11 +521,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld\\Mods\\AdMech-Xeno-AHR-Orkz\\1.2\\Source\\AnimalVehicles\\AnimalVehicles\\AnimalVehicles.csproj",
+      "projectUniqueName": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld\\Mods\\AdvancedAnimalFramework\\Source\\AnimalVehicles\\AnimalVehicles\\AnimalVehicles.csproj",
       "projectName": "AnimalVehicles",
-      "projectPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld\\Mods\\AdMech-Xeno-AHR-Orkz\\1.2\\Source\\AnimalVehicles\\AnimalVehicles\\AnimalVehicles.csproj",
+      "projectPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld\\Mods\\AdvancedAnimalFramework\\Source\\AnimalVehicles\\AnimalVehicles\\AnimalVehicles.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld\\Mods\\AdMech-Xeno-AHR-Orkz\\1.2\\Source\\AnimalVehicles\\AnimalVehicles\\obj\\",
+      "outputPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld\\Mods\\AdvancedAnimalFramework\\Source\\AnimalVehicles\\AnimalVehicles\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [

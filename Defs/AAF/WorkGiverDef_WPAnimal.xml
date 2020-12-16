@@ -4,7 +4,7 @@
 <WorkGiverDef>
 	<defName>WPConstructFinishFrames</defName>
 	<label>construct placed frames</label>
-	<giverClass>WorkGiver_WPConstructFinishFrames</giverClass>
+	<giverClass>AnimalJobs.WorkGiver_WPConstructFinishFrames</giverClass>
 	<workType>Construction</workType>
 	<priorityInType>80</priorityInType>
 	<verb>construct</verb>
@@ -20,7 +20,7 @@
 <WorkGiverDef>
 	<defName>WPConstructDeliverResourcesToFrames</defName>
 	<label>deliver resources to frames</label>
-	<giverClass>WorkGiver_WPConstructDeliverResourcesToFrames</giverClass>
+	<giverClass>AnimalJobs.WorkGiver_WPConstructDeliverResourcesToFrames</giverClass>
 	<workType>Construction</workType>
 	<priorityInType>70</priorityInType>
 	<verb>work on</verb>
@@ -36,7 +36,7 @@
 <WorkGiverDef>
 	<defName>WPConstructDeliverResourcesToBlueprints</defName>
 	<label>deliver resources to blueprints</label>
-	<giverClass>WorkGiver_WPConstructDeliverResourcesToBlueprints</giverClass>
+	<giverClass>AnimalJobs.WorkGiver_WPConstructDeliverResourcesToBlueprints</giverClass>
 	<workType>Construction</workType>
 	<priorityInType>60</priorityInType>
 	<verb>work on</verb>
@@ -52,7 +52,7 @@
 	<WorkGiverDef>
 	<defName>WPGrowerSow</defName>
 	<label>sow crops</label>
-	<giverClass>WorkGiver_WPGrowerSow</giverClass>
+	<giverClass>AnimalJobs.WorkGiver_WPGrowerSow</giverClass>
 	<workType>Growing</workType>
 	<priorityInType>50</priorityInType>
 	<verb>sow</verb>
@@ -67,7 +67,7 @@
 	<WorkGiverDef>
 	<defName>WPDrill</defName>
 	<label>drill</label>
-	<giverClass>WorkGiver_WPDeepDrill</giverClass>
+	<giverClass>AnimalJobs.WorkGiver_WPDeepDrill</giverClass>
 	<workType>Mining</workType>
 	<priorityInType>50</priorityInType>
 	<verb>drill</verb>
@@ -80,7 +80,7 @@
 	<WorkGiverDef>
 	<defName>WPDoBillsCook</defName>
 	<label>cook meals at stove</label>
-	<giverClass>WorkGiver_WPDoBill</giverClass>
+	<giverClass>AnimalJobs.WorkGiver_WPDoBill</giverClass>
 	<workType>Cooking</workType>
 	<priorityInType>100</priorityInType>
 	<fixedBillGiverDefs>
@@ -98,7 +98,7 @@
 <WorkGiverDef>
 	<defName>WPDoBillsCookCampfire</defName>
 	<label>cook meals at campfire</label>
-	<giverClass>WorkGiver_WPDoBill</giverClass>
+	<giverClass>AnimalJobs.WorkGiver_WPDoBill</giverClass>
 	<workType>Cooking</workType>
 	<priorityInType>97</priorityInType>
 	<fixedBillGiverDefs>
@@ -115,7 +115,7 @@
 	<WorkGiverDef>
 	<defName>WPDoctorTendToHumanlikes</defName>
 	<label>tend to patients</label>
-	<giverClass>WorkGiver_WPTendOther</giverClass>
+	<giverClass>AnimalJobs.WorkGiver_WPTendOther</giverClass>
 	<workType>Doctor</workType>
 	<verb>tend to</verb>
 	<gerund>tending to</gerund>
@@ -130,7 +130,7 @@
 <WorkGiverDef>
 	<defName>WPDoctorFeedHumanlikes</defName>
 	<label>feed patients</label>
-	<giverClass>WorkGiver_WPFeedPatient</giverClass>
+	<giverClass>AnimalJobs.WorkGiver_WPFeedPatient</giverClass>
 	<workType>Doctor</workType>
 	<verb>feed</verb>
 	<gerund>feeding</gerund>
@@ -145,7 +145,7 @@
 <WorkGiverDef>
 	<defName>WPDoctorTendToAnimals</defName>
 	<label>tend to animals</label>
-	<giverClass>WorkGiver_WPTendOther</giverClass>
+	<giverClass>AnimalJobs.WorkGiver_WPTendOther</giverClass>
 	<workType>Doctor</workType>
 	<verb>tend to</verb>
 	<gerund>tending to</gerund>
@@ -160,7 +160,7 @@
 <WorkGiverDef>
 	<defName>WPDoctorFeedAnimals</defName>
 	<label>feed animals</label>
-	<giverClass>WorkGiver_WPFeedPatient</giverClass>
+	<giverClass>AnimalJobs.WorkGiver_WPFeedPatient</giverClass>
 	<workType>Doctor</workType>
 	<verb>feed</verb>
 	<gerund>feeding</gerund>
@@ -186,7 +186,7 @@
 	<WorkGiverDef>
 	<defName>WPDoBillsButcherFlesh</defName>
 	<label>butcher creatures</label>
-	<giverClass>WorkGiver_WPDoBill</giverClass>
+	<giverClass>AnimalJobs.WorkGiver_WPDoBill</giverClass>
 	<workType>Cooking</workType>
 	<priorityInType>90</priorityInType>
 	<fixedBillGiverDefs>
@@ -204,7 +204,7 @@
 	<WorkGiverDef>
 	<defName>WPDoBillsBrew</defName>
 	<label>brew liquors</label>
-	<giverClass>WorkGiver_WPDoBill</giverClass>
+	<giverClass>AnimalJobs.WorkGiver_WPDoBill</giverClass>
 	<workType>Cooking</workType>
 	<priorityInType>30</priorityInType>
 	<fixedBillGiverDefs>
@@ -221,7 +221,7 @@
 <WorkGiverDef>
 	<defName>WPMilk</defName>
 	<label>milk animals</label>
-	<giverClass>WorkGiver_WPMilk</giverClass>
+	<giverClass>AnimalJobs.WorkGiver_WPMilk</giverClass>
 	<workType>Handling</workType>
 	<verb>milk</verb>
 	<gerund>milking</gerund>
@@ -234,7 +234,7 @@
 <WorkGiverDef>
 	<defName>WPShear</defName>
 	<label>shear animals</label>
-	<giverClass>WorkGiver_WPShear</giverClass>
+	<giverClass>AnimalJobs.WorkGiver_WPShear</giverClass>
 	<workType>Handling</workType>
 	<verb>shear</verb>
 	<gerund>shearing</gerund>
@@ -247,7 +247,7 @@
 	<WorkGiverDef>
 		<defName>WPDeconstruct</defName>
 		<label>deconstruct structures</label>
-		<giverClass>WorkGiver_WPDeconstruct</giverClass>
+		<giverClass>AnimalJobs.WorkGiver_WPDeconstruct</giverClass>
 		<workType>Construction</workType>
 		<priorityInType>50</priorityInType>
 		<verb>deconstruct</verb>

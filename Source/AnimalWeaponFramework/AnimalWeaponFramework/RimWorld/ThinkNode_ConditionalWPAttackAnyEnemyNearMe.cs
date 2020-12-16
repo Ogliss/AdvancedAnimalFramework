@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Verse;
 using Verse.AI;
+using RimWorld;
 
-namespace RimWorld
+namespace AnimalWeapons
 {
-	// Token: 0x02000010 RID: 16
-	public class ThinkNode_ConditionalWPAttackAnyEnemyNearMe : ThinkNode_Conditional
+    // Token: 0x02000010 RID: 16
+    public class ThinkNode_ConditionalWPAttackAnyEnemyNearMe : ThinkNode_Conditional
 	{
 		// Token: 0x06000037 RID: 55 RVA: 0x00003B24 File Offset: 0x00001D24
 		public override ThinkNode DeepCopy(bool resolve = true)

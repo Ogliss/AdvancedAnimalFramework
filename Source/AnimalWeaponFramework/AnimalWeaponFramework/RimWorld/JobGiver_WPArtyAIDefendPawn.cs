@@ -1,8 +1,9 @@
-﻿using System;
+﻿using RimWorld;
+using System;
 using Verse;
 using Verse.AI;
 
-namespace RimWorld
+namespace AnimalWeapons
 {
 	// Token: 0x02000006 RID: 6
 	public abstract class JobGiver_WPArtyAIDefendPawn : JobGiver_WPArtyAIFightEnemy

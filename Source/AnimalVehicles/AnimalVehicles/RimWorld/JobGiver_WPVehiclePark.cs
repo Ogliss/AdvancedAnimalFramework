@@ -1,11 +1,11 @@
-﻿using System;
-using Verse;
+﻿using Verse;
 using Verse.AI;
+using RimWorld;
 
-namespace RimWorld
+namespace AnimalVehicle
 {
-	// Token: 0x02000006 RID: 6
-	public class JobGiver_WPVehiclePark : ThinkNode
+    // Token: 0x02000006 RID: 6
+    public class JobGiver_WPVehiclePark : ThinkNode
 	{
 		// Token: 0x0600000C RID: 12 RVA: 0x000026F4 File Offset: 0x000008F4
 		public override ThinkResult TryIssueJobPackage(Pawn pawn, JobIssueParams jobParams)

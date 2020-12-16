@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Verse;
+using RimWorld;
 using static Verse.DamageWorker;
 
-namespace RimWorld
+namespace AnimalVehicle
 {
-	// Token: 0x02000007 RID: 7
-	internal class Recipe_WPRepairVehicle : RecipeWorker
+    // Token: 0x02000007 RID: 7
+    internal class Recipe_WPRepairVehicle : RecipeWorker
 	{
 		public override void ApplyOnPawn(Pawn pawn, BodyPartRecord part, Pawn billDoer, List<Thing> ingredients, Bill bill)
 		{

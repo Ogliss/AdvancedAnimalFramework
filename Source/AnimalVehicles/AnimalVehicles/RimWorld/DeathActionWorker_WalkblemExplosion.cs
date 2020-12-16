@@ -1,10 +1,10 @@
-﻿using System;
-using Verse;
+﻿using Verse;
+using RimWorld;
 
-namespace RimWorld
+namespace AnimalVehicle
 {
-	// Token: 0x02000003 RID: 3
-	public class DeathActionWorker_WalkblemExplosion : DeathActionWorker
+    // Token: 0x02000003 RID: 3
+    public class DeathActionWorker_WalkblemExplosion : DeathActionWorker
 	{
 		// Token: 0x17000001 RID: 1
 		// (get) Token: 0x06000005 RID: 5 RVA: 0x000022CC File Offset: 0x000004CC

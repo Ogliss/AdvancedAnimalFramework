@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using RimWorld;
+using Verse;
+using Verse.AI;
 
-namespace Verse.AI
+namespace AnimalWeapons
 {
 	// Token: 0x02000018 RID: 24
 	public class JobDriver_WPAttack : JobDriver

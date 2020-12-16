@@ -61,13 +61,13 @@
 			<treeDef>MentalStateCritical</treeDef>
 		</li>
 		
-		<li Class="ThinkNode_ConditionalWPVehicleCaravan">
+		<li Class="AnimalWeapons.ThinkNode_ConditionalWPVehicleCaravan">
 			<invert>true</invert>
 			<subNodes>			
 			<li Class="ThinkNode_ConditionalShouldFollowMaster">
 				<invert>true</invert>
 				<subNodes>
-						<li Class="ThinkNode_ConditionalWPAttackAnyEnemyNearMe">
+						<li Class="AnimalWeapons.ThinkNode_ConditionalWPAttackAnyEnemyNearMe">
 							<distance>30</distance>
 						</li>						
 				</subNodes>
@@ -76,13 +76,13 @@
 		</li>
 				
 				
-		<li Class="ThinkNode_ConditionalWPVehicleCaravan">
+		<li Class="AnimalWeapons.ThinkNode_ConditionalWPVehicleCaravan">
 		<subNodes>	
 		
-			<li Class="ThinkNode_ConditionalWPAttackAnyEnemyNearMe">
+			<li Class="AnimalWeapons.ThinkNode_ConditionalWPAttackAnyEnemyNearMe">
 				<distance>30</distance>
 				<subNodes>
-					<li Class="ThinkNode_ConditionalWPLowHealthPanicExitMap">
+					<li Class="AnimalWeapons.ThinkNode_ConditionalWPLowHealthPanicExitMap">
 					<threshold>0.5</threshold>
 					<subNodes>				
 						<li Class="JobGiver_ExitMapPanic" />
@@ -115,21 +115,21 @@
 		
 		<li Class="ThinkNode_ConditionalOfPlayerFaction">
 			<subNodes>
-			<li Class="JobGiver_WPAutoSkill" />
+			<li Class="AnimalVehicle.JobGiver_WPAutoSkill" />
 			</subNodes>
 		</li>
 		
 
 		
-		<li Class="ThinkNode_ConditionalNotDowned">
+		<li Class="AnimalWeapons.ThinkNode_ConditionalNotDowned">
 			<subNodes>
 			<li Class="ThinkNode_ConditionalDowned">
 					<invert>true</invert>	
 					<subNodes>
-					<li Class="ThinkNode_WPChancePerHour_Constant">
+					<li Class="AnimalJobs.ThinkNode_WPChancePerHour_Constant">
 							<mtbHours>0.1</mtbHours>
 							<subNodes>
-							<li Class="JobGiver_WPAutoWeapon" />
+							<li Class="AnimalWeapons.JobGiver_WPAutoWeapon" />
 							</subNodes>
 					</li>
 				</subNodes>
@@ -221,7 +221,7 @@
 						<subNodes> 
 						<li Class="ThinkNode_ConditionalShouldFollowMaster">
 							<subNodes>
-								<li Class="JobGiver_WPArtyAIDefendMaster">
+								<li Class="AnimalWeapons.JobGiver_WPArtyAIDefendMaster">
 									<attackMeleeThreatEvenIfNotHostile>true</attackMeleeThreatEvenIfNotHostile>
 								</li> 
 								<li Class="JobGiver_AIFollowMaster"/>
@@ -305,10 +305,10 @@
 			</subNodes>
 		</li>
 		
-				<li Class="ThinkNode_ConditionalWPVehicleCaravan">
+				<li Class="AnimalWeapons.ThinkNode_ConditionalWPVehicleCaravan">
 		<invert>true</invert>
 			<subNodes>
-			<li Class="ThinkNode_ConditionalNotDowned">
+			<li Class="AnimalWeapons.ThinkNode_ConditionalNotDowned">
 				<subNodes>
 				<li Class="ThinkNode_ConditionalMentalState">
 				<state>PanicFlee</state>
@@ -326,7 +326,7 @@
 								<li Class="ThinkNode_ConditionalShouldFollowMaster" >
 									<invert>true</invert>
 									<subNodes>
-									<li Class="JobGiver_WPAIFightAnyone" />
+									<li Class="AnimalWeapons.JobGiver_WPAIFightAnyone" />
 									</subNodes>	
 								</li>
 						</subNodes>

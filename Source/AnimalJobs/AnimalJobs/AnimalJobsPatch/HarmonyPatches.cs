@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using AnimalJobs.AI;
 using HarmonyLib;
 using Quarry;
 using RBB_Code;
