@@ -237,6 +237,11 @@ namespace AnimalJobs
 		// Token: 0x06000004 RID: 4 RVA: 0x000027C4 File Offset: 0x000009C4
 		private bool PawnCanUseWorkGiver(Pawn pawn, WorkGiver giver)
 		{
+            if (!pawn.RaceProps.Animal)
+            {
+				Log.Warning(pawn.Name+" tried to use "+this + " to give " +giver+" but "+ pawn.Name +"is not an animal");
+				return false;
+            }
 			return !giver.ShouldSkip(pawn, false) && giver.MissingRequiredCapacity(pawn) == null;
 		}
 
