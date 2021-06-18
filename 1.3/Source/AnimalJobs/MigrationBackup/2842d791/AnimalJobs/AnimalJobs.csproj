@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{81F5405B-0DF1-46EE-A793-4D5D47E13969}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AnimalJobs</RootNamespace>
+    <AssemblyName>AnimalJobs</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lib.Harmony.2.0.2\lib\net472\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnimalJobsPatch\HarmonyPatches.cs" />
+    <Compile Include="JobGiver_GenericWorkGiver.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RimWorld\JobDriver_WPConstructFinishFrame.cs" />
+    <Compile Include="RimWorld\JobDriver_WPDeconstruct.cs" />
+    <Compile Include="RimWorld\JobDriver_WPFoodFeedPatient.cs" />
+    <Compile Include="RimWorld\JobDriver_WPGatherAnimalBodyResources.cs" />
+    <Compile Include="RimWorld\JobDriver_WPMilk.cs" />
+    <Compile Include="RimWorld\JobDriver_WPOperateDeepDrill.cs" />
+    <Compile Include="RimWorld\JobDriver_WPPlantSow.cs" />
+    <Compile Include="RimWorld\JobDriver_WPRemoveBuilding.cs" />
+    <Compile Include="RimWorld\JobDriver_WPRepair.cs" />
+    <Compile Include="RimWorld\JobDriver_WPShear.cs" />
+    <Compile Include="RimWorld\JobDriver_WPTendPatient.cs" />
+    <Compile Include="RimWorld\JobGiver_WPVisitSickPawn.cs" />
+    <Compile Include="RimWorld\Toils_WPTend.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPConstructDeliverResources.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPConstructDeliverResourcesToBlueprints.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPConstructDeliverResourcesToFrames.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPConstructFinishFrames.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPDeconstruct.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPDeepDrill.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPFeedPatient.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPGatherAnimalBodyResources.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPGrower.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPGrowerSow.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPMilk.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPRemoveBuilding.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPShear.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPTend.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPTendOther.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPVisitSickPawn.cs" />
+    <Compile Include="RimWorld\WPFrame.cs" />
+    <Compile Include="RimWorld\WPGenConstruct.cs" />
+    <Compile Include="RimWorld\WPJobDefOf.cs" />
+    <Compile Include="Verse\AI\JobDriver_WPDoBill.cs" />
+    <Compile Include="Verse\AI\ThinkNode_WPChancePerHour.cs" />
+    <Compile Include="Verse\AI\ThinkNode_WPChancePerHour_Constant.cs" />
+    <Compile Include="Verse\AI\Toils_WPRecipe.cs" />
+    <Compile Include="Verse\JobGiver_WPCleanFilth.cs" />
+    <Compile Include="Verse\JobGiver_WPCutPlant.cs" />
+    <Compile Include="Verse\JobGiver_WPDeconstruct.cs" />
+    <Compile Include="Verse\JobGiver_WPFlick.cs" />
+    <Compile Include="Verse\JobGiver_WPMine.cs" />
+    <Compile Include="Verse\JobGiver_WPPlantHarvest.cs" />
+    <Compile Include="Verse\JobGiver_WPRepair.cs" />
+    <Compile Include="Verse\WPGenRecipe.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

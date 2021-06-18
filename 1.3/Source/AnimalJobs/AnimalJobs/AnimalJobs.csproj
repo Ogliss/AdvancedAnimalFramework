@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{81F5405B-0DF1-46EE-A793-4D5D47E13969}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AnimalJobs</RootNamespace>
+    <AssemblyName>AnimalJobs</AssemblyName>
+    <TargetFramework>net472</TargetFramework>
+    <FileAlignment>512</FileAlignment>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Assemblies\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Quarry">
+      <HintPath>..\..\..\..\..\..\..\..\workshop\content\294100\2007576583\1.1\Assemblies\Quarry.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Rainbeau's Fishing">
+      <HintPath>..\..\..\..\..\..\..\..\workshop\content\294100\2034028432\1.2\Assemblies\Rainbeau's Fishing.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnimalJobsPatch\HarmonyPatches.cs" />
+    <Compile Include="JobGiver_GenericWorkGiver.cs" />
+    <Compile Include="RimWorld\JobDriver_WPConstructFinishFrame.cs" />
+    <Compile Include="RimWorld\JobDriver_WPDeconstruct.cs" />
+    <Compile Include="RimWorld\JobDriver_WPFoodFeedPatient.cs" />
+    <Compile Include="RimWorld\JobDriver_WPGatherAnimalBodyResources.cs" />
+    <Compile Include="RimWorld\JobDriver_WPMilk.cs" />
+    <Compile Include="RimWorld\JobDriver_WPOperateDeepDrill.cs" />
+    <Compile Include="RimWorld\JobDriver_WPPlantSow.cs" />
+    <Compile Include="RimWorld\JobDriver_WPRemoveBuilding.cs" />
+    <Compile Include="RimWorld\JobDriver_WPRepair.cs" />
+    <Compile Include="RimWorld\JobDriver_WPShear.cs" />
+    <Compile Include="RimWorld\JobDriver_WPTendPatient.cs" />
+    <Compile Include="RimWorld\JobGiver_WPVisitSickPawn.cs" />
+    <Compile Include="RimWorld\Toils_WPTend.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPConstructDeliverResources.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPConstructDeliverResourcesToBlueprints.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPConstructDeliverResourcesToFrames.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPConstructFinishFrames.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPDeconstruct.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPDeepDrill.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPFeedPatient.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPGatherAnimalBodyResources.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPGrower.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPGrowerSow.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPMilk.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPRemoveBuilding.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPShear.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPTend.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPTendOther.cs" />
+    <Compile Include="RimWorld\WorkGiver_WPVisitSickPawn.cs" />
+    <Compile Include="RimWorld\WPFrame.cs" />
+    <Compile Include="RimWorld\WPGenConstruct.cs" />
+    <Compile Include="RimWorld\WPJobDefOf.cs" />
+    <Compile Include="Verse\AI\JobDriver_WPDoBill.cs" />
+    <Compile Include="Verse\AI\ThinkNode_WPChancePerHour.cs" />
+    <Compile Include="Verse\AI\ThinkNode_WPChancePerHour_Constant.cs" />
+    <Compile Include="Verse\AI\Toils_WPRecipe.cs" />
+    <Compile Include="Verse\JobGiver_WPCleanFilth.cs" />
+    <Compile Include="Verse\JobGiver_WPCutPlant.cs" />
+    <Compile Include="Verse\JobGiver_WPDeconstruct.cs" />
+    <Compile Include="Verse\JobGiver_WPFlick.cs" />
+    <Compile Include="Verse\JobGiver_WPMine.cs" />
+    <Compile Include="Verse\JobGiver_WPPlantHarvest.cs" />
+    <Compile Include="Verse\JobGiver_WPRepair.cs" />
+    <Compile Include="Verse\WPGenRecipe.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.3.0" GeneratePathProperty="true" />
+    <PackageReference Include="Lib.Harmony">
+      <Version>2.0.4</Version>
+    </PackageReference>
+    <PackageReference Include="TaskPubliciser">
+      <Version>1.0.3</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Target Name="MyCode" BeforeTargets="UpdateReferences">
+    <PropertyGroup>
+      <AssemblyCSharp>$(PkgKrafs_Rimworld_Ref)\ref\net472\Assembly-CSharp.dll</AssemblyCSharp>
+      <PubliciseOutputPath>$(PkgKrafs_Rimworld_Ref)\ref\net472\</PubliciseOutputPath>
+      <AssemblyCSharp_Publicised>$(PubliciseOutputPath)Assembly-CSharp_publicised.dll</AssemblyCSharp_Publicised>
+    </PropertyGroup>
+    <Publicise TargetAssemblyPath="$(AssemblyCSharp)" OutputPath="$(PkgKrafs_Rimworld_Ref)\ref\net472\" Condition="Exists('$(AssemblyCSharp)')" />
+    <ItemGroup>
+      <Reference Include="$(AssemblyCSharp_Publicised)">
+        <SpecificVersion>false</SpecificVersion>
+        <HintPath>$(AssemblyCSharp_Publicised)</HintPath>
+        <Implicit>true</Implicit>
+        <Private>false</Private>
+      </Reference>
+    </ItemGroup>
+  </Target>
+  <Target Name="UpdateReferences" AfterTargets="ResolveLockFileReferences">
+    <ItemGroup>
+      <Reference Remove="$(PkgKrafs_Rimworld_Ref)\ref\net472\Assembly-CSharp.dll" />
+    </ItemGroup>
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
