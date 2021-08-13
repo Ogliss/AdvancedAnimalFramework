@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "AI9JVzFc0amyFaDS7yJ+RvanVa+hV2OpiTEcI/PKdNlUZIuknLQo4Hu3DKNF4Az9OaG8RtjpCETm1gubR6AXhQ==",
+  "dgSpecHash": "27mR2wvyrjX0Svm1Bey8/sX1avhK7PktOeG9terSX8cQg9MEqSVUK+Z3VysQz755KTUyv3JGKQsPZ/SPcErYMQ==",
   "success": true,
-  "projectFilePath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld\\Mods\\AdvancedAnimalFramework\\Source\\AnimalVehicles\\AnimalVehicles\\AnimalVehicles.csproj",
+  "projectFilePath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld\\Mods\\AdvancedAnimalFramework\\1.2\\Source\\AnimalVehicles\\AnimalVehicles\\AnimalVehicles.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\User\\.nuget\\packages\\krafs.rimworld.ref\\1.2.2753\\krafs.rimworld.ref.1.2.2753.nupkg.sha512",
-    "C:\\Users\\User\\.nuget\\packages\\lib.harmony\\2.0.2\\lib.harmony.2.0.2.nupkg.sha512"
+    "C:\\Users\\User\\.nuget\\packages\\krafs.rimworld.ref\\1.2.2905\\krafs.rimworld.ref.1.2.2905.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\lib.harmony\\2.1.0\\lib.harmony.2.1.0.nupkg.sha512"
   ],
   "logs": []
 }

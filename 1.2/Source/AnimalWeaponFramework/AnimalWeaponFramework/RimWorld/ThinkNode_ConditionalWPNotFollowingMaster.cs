@@ -7,7 +7,7 @@ namespace AnimalWeapons
     public class ThinkNode_ConditionalWPNotFollowingMaster : ThinkNode_Conditional
 	{
 		// Token: 0x0600003D RID: 61 RVA: 0x00003D0C File Offset: 0x00001F0C
-		protected override bool Satisfied(Pawn pawn)
+		public override bool Satisfied(Pawn pawn)
 		{
 			return ThinkNode_ConditionalWPNotFollowingMaster.NotFollowingMaster(pawn);
 		}

@@ -9,7 +9,7 @@ namespace AnimalWeapons
 	public class JobGiver_ArtyWeapon : ThinkNode_JobGiver
 	{
 		// Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
-		protected override Job TryGiveJob(Pawn pawn)
+		public override Job TryGiveJob(Pawn pawn)
 		{
 			bool flag = Rand.Value < 0.75f;
 			Job result;
@@ -30,14 +30,15 @@ namespace AnimalWeapons
 				else
 				{
 					Pawn pawn2 = this.FindPawnTarget(pawn);
-					bool flag3 = pawn2 != null && pawn.CanReach(pawn2, PathEndMode.Touch, Danger.Deadly, false, TraverseMode.ByPawn);
+					bool flag3 = pawn2 != null && pawn.CanReach(pawn2, PathEndMode.Touch, Danger.Deadly, false, false, TraverseMode.ByPawn);
 					if (flag3)
 					{
 						result = new Job(JobDefOf.AttackMelee, pawn2)
 						{
 							maxNumMeleeAttacks = 1,
 							expiryInterval = Rand.Range(42, 200),
-							canBash = true
+							canBashDoors = true,
+							canBashFences = true,
 						};
 					}
 					else
@@ -50,7 +51,8 @@ namespace AnimalWeapons
 							{
 								maxNumMeleeAttacks = 1,
 								expiryInterval = Rand.Range(420, 900),
-								canBash = true
+								canBashDoors = true,
+								canBashFences = true
 							};
 						}
 						else

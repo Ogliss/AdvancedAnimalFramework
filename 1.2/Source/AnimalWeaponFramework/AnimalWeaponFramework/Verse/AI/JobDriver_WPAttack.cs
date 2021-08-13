@@ -29,7 +29,7 @@ namespace AnimalWeapons
 		}
 
 		// Token: 0x06000054 RID: 84 RVA: 0x0000427A File Offset: 0x0000247A
-		protected override IEnumerable<Toil> MakeNewToils()
+		public override IEnumerable<Toil> MakeNewToils()
 		{
 			yield return Toils_General.DoAtomic(delegate
 			{

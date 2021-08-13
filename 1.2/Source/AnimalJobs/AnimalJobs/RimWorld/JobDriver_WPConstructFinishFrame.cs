@@ -30,7 +30,7 @@ namespace AnimalJobs
 		}
 
 		// Token: 0x06000035 RID: 53 RVA: 0x00003DB8 File Offset: 0x00001FB8
-		protected override IEnumerable<Toil> MakeNewToils()
+		public override IEnumerable<Toil> MakeNewToils()
 		{
 			yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch).FailOnDespawnedNullOrForbidden(TargetIndex.A);
 			Toil build = new Toil();

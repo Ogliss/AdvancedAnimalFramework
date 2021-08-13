@@ -19,7 +19,7 @@ namespace AnimalWeapons
 		}
 
 		// Token: 0x0600004F RID: 79 RVA: 0x0000412C File Offset: 0x0000232C
-		protected override IEnumerable<Toil> MakeNewToils()
+		public override IEnumerable<Toil> MakeNewToils()
 		{
 			this.FailOnDestroyedOrNull(TargetIndex.A);
 			yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.ClosestTouch).FailOnDespawnedNullOrForbidden(TargetIndex.A);

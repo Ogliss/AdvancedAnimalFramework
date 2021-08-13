@@ -19,7 +19,7 @@ namespace AnimalJobs
 		}
 
 		// Token: 0x0600004C RID: 76 RVA: 0x00004148 File Offset: 0x00002348
-		protected override IEnumerable<Toil> MakeNewToils()
+		public override IEnumerable<Toil> MakeNewToils()
 		{
 			this.FailOnDespawnedNullOrForbidden(TargetIndex.A);
 			this.FailOnBurningImmobile(TargetIndex.A);

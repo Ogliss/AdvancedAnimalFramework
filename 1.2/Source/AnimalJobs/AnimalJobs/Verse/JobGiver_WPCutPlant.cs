@@ -10,7 +10,7 @@ namespace AnimalJobs
 	public class JobGiver_WPCutPlant : ThinkNode_JobGiver
 	{
 		// Token: 0x06000009 RID: 9 RVA: 0x00002ACC File Offset: 0x00000CCC
-		protected override Job TryGiveJob(Pawn pawn)
+		public override Job TryGiveJob(Pawn pawn)
 		{
 			Region region = pawn.GetRegion(RegionType.Set_Passable);
 			bool flag = region == null;

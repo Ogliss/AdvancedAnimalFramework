@@ -15,7 +15,7 @@ namespace AnimalJobs
 			return thinkNode_WPChancePerHour_Constant;
 		}
 
-        protected override float MtbHours(Pawn pawn)
+		protected override float MtbHours(Pawn pawn)
 		{
 			return this.mtbHours;
 		}

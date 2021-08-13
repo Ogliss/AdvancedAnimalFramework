@@ -36,7 +36,7 @@ namespace AnimalJobs
 		}
 
 		// Token: 0x06000051 RID: 81 RVA: 0x000041E8 File Offset: 0x000023E8
-		protected override IEnumerable<Toil> MakeNewToils()
+		public override IEnumerable<Toil> MakeNewToils()
 		{
 			yield return Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.Touch).FailOn(() => PlantUtility.AdjacentSowBlocker(this.job.plantDefToSow, this.TargetA.Cell, this.Map) != null).FailOn(() => !this.job.plantDefToSow.CanEverPlantAt(this.TargetLocA, this.Map));
 			Toil sowToil = new Toil();

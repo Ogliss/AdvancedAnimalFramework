@@ -37,7 +37,7 @@ namespace AnimalWeapons
 		}
 
 		// Token: 0x06000011 RID: 17 RVA: 0x00002590 File Offset: 0x00000790
-		protected override Job TryGiveJob(Pawn pawn)
+		public override Job TryGiveJob(Pawn pawn)
 		{
 			Pawn defendee = this.GetDefendee(pawn);
 			bool flag = defendee == null;

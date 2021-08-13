@@ -43,7 +43,7 @@ namespace AnimalWeapons
 		}
 
 		// Token: 0x0600001A RID: 26 RVA: 0x00002810 File Offset: 0x00000A10
-		protected override Job TryGiveJob(Pawn pawn)
+		public override Job TryGiveJob(Pawn pawn)
 		{
 			bool flag = pawn.playerSettings == null;
 			Job result;

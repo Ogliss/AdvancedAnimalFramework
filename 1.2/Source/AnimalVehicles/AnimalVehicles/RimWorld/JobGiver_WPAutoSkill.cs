@@ -8,7 +8,7 @@ namespace AnimalVehicle
     public class JobGiver_WPAutoSkill : ThinkNode_JobGiver
 	{
 		// Token: 0x0600000A RID: 10 RVA: 0x000023F8 File Offset: 0x000005F8
-		protected override Job TryGiveJob(Pawn pawn)
+		public override Job TryGiveJob(Pawn pawn)
 		{
 			pawn.training.SetWantedRecursive(TrainableDefOf.Obedience, true);
 			bool flag = pawn.training.NextTrainableToTrain() != null;

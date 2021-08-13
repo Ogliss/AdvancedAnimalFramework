@@ -9,7 +9,7 @@ namespace AnimalWeapons
 	public class JobGiver_WPAttack : ThinkNode_JobGiver
 	{
 		// Token: 0x06000022 RID: 34 RVA: 0x00002D28 File Offset: 0x00000F28
-		protected override Job TryGiveJob(Pawn pawn)
+		public override Job TryGiveJob(Pawn pawn)
 		{
 			bool flag = pawn.Downed || pawn.Dead || pawn.equipment.PrimaryEq == null;
 			Job result;
@@ -27,7 +27,7 @@ namespace AnimalWeapons
 				else
 				{
 					Pawn pawn2 = this.FindPawnTarget(pawn);
-					bool flag3 = pawn2 != null && pawn.CanReach(pawn2, PathEndMode.Touch, Danger.Deadly, false, TraverseMode.ByPawn);
+					bool flag3 = pawn2 != null && pawn.CanReach(pawn2, PathEndMode.Touch, Danger.Deadly, false, false, TraverseMode.ByPawn);
 					if (flag3)
 					{
 						bool flag4 = pawn2.Downed || pawn2.Dead;

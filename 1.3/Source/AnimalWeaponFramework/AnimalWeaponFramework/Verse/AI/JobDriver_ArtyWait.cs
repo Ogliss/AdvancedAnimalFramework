@@ -40,7 +40,7 @@ namespace AnimalWeapons
 		}
 
 		// Token: 0x06000046 RID: 70 RVA: 0x00003E8B File Offset: 0x0000208B
-		protected override IEnumerable<Toil> MakeNewToils()
+		public override IEnumerable<Toil> MakeNewToils()
 		{
 			Toil wait = new Toil();
 			wait.initAction = delegate()

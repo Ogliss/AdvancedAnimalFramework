@@ -17,7 +17,7 @@ namespace AnimalWeapons
 		}
 
 		// Token: 0x06000038 RID: 56 RVA: 0x00003B50 File Offset: 0x00001D50
-		protected override bool Satisfied(Pawn pawn)
+		public override bool Satisfied(Pawn pawn)
 		{
 			bool flag = !pawn.Spawned || pawn.MentalStateDef == MentalStateDefOf.PanicFlee || pawn.Downed || pawn.Dead;
 			bool result;

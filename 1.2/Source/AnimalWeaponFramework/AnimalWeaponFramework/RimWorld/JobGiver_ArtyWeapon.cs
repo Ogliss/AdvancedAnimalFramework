@@ -9,7 +9,7 @@ namespace AnimalWeapons
 	public class JobGiver_ArtyWeapon : ThinkNode_JobGiver
 	{
 		// Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
-		protected override Job TryGiveJob(Pawn pawn)
+		public override Job TryGiveJob(Pawn pawn)
 		{
 			bool flag = Rand.Value < 0.75f;
 			Job result;

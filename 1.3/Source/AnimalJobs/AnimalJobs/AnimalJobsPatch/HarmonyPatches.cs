@@ -44,7 +44,11 @@ namespace AnimalJobs
 			bool Fishin = ModsConfig.ActiveModsInLoadOrder.Any((ModMetaData m) => m.PackageIdPlayerFacing == "firefoxpdm.RainbeausFishing");
             if (Fishin)
             {
-				FishingPatch(harmony);
+				Fishing = DefDatabase<WorkTypeDef>.GetNamed("Fishing");
+                if (Fishing != null)
+				{
+					FishingPatch(harmony);
+				}
 			}
 			harmony.Patch(original, prefix, null, null, null);
 			harmony.Patch(original2, prefix2, null, null, null);
@@ -52,7 +56,7 @@ namespace AnimalJobs
 			harmony.Patch(original4, prefix4, null, null, null);
 			harmony.Patch(original5, prefix5, null, null, null);
 		}
-
+		public static WorkTypeDef Fishing = null;
 
 		public static void FishingPatch(Harmony harmony)
         {
@@ -139,7 +143,7 @@ namespace AnimalJobs
 						constructible.ToStringSafe<Thing>(),
 						" at ",
 						constructible.Position
-					}), 6429262, false);
+					}), 6429262);
 				}
 				else
 				{
@@ -230,13 +234,13 @@ namespace AnimalJobs
 			Toil toil = new Toil();
 			toil.initAction = delegate()
 			{
-				Log.Message("init delegated.", false);
+				Log.Message("init delegated.");
 				Pawn actor = toil.actor;
 				Job curJob = actor.jobs.curJob;
 				bool animal = actor.RaceProps.Animal;
 				if (animal)
 				{
-					Log.Message("I am in.", false);
+					Log.Message("I am in.");
 					JobDriver curDriver = actor.jobs.curDriver;
 					JobDriver_WPDoBill jobDriver_WPDoBill = curDriver as JobDriver_WPDoBill;
 					UnfinishedThing unfinishedThing = curJob.GetTarget(TargetIndex.B).Thing as UnfinishedThing;
@@ -252,7 +256,7 @@ namespace AnimalJobs
 				}
 				else
 				{
-					Log.Message("I am here instead.", false);
+					Log.Message("I am here instead.");
 					JobDriver_DoBill jobDriver_DoBill = (JobDriver_DoBill)actor.jobs.curDriver;
 					UnfinishedThing unfinishedThing2 = curJob.GetTarget(TargetIndex.B).Thing as UnfinishedThing;
 					bool flag2 = unfinishedThing2 != null && unfinishedThing2.Initialized;
@@ -262,7 +266,7 @@ namespace AnimalJobs
 					}
 					else
 					{
-						jobDriver_DoBill.workLeft = curJob.bill.recipe.WorkAmountTotal((unfinishedThing2 == null) ? null : unfinishedThing2.Stuff);
+						jobDriver_DoBill.workLeft = curJob.bill.recipe.WorkAmountTotal(unfinishedThing2?.Stuff);
 						bool flag3 = unfinishedThing2 != null;
 						if (flag3)
 						{
@@ -276,7 +280,7 @@ namespace AnimalJobs
 			};
 			toil.tickAction = delegate()
 			{
-				Log.Message("tick delegated.", false);
+				Log.Message("tick delegated.");
 				Pawn actor = toil.actor;
 				Job curJob = actor.jobs.curJob;
 				JobDriver curDriver = actor.jobs.curDriver;
@@ -408,11 +412,11 @@ namespace AnimalJobs
 				float result;
 				if (animal)
 				{
-					result = 1f - ((JobDriver_WPDoBill)actor.jobs.curDriver).workLeft / curJob.bill.recipe.WorkAmountTotal((unfinishedThing == null) ? null : unfinishedThing.Stuff);
+					result = 1f - ((JobDriver_WPDoBill)actor.jobs.curDriver).workLeft / curJob.bill.recipe.WorkAmountTotal(unfinishedThing?.Stuff);
 				}
 				else
 				{
-					result = 1f - ((JobDriver_DoBill)actor.jobs.curDriver).workLeft / curJob.bill.recipe.WorkAmountTotal((unfinishedThing == null) ? null : unfinishedThing.Stuff);
+					result = 1f - ((JobDriver_DoBill)actor.jobs.curDriver).workLeft / curJob.bill.recipe.WorkAmountTotal(unfinishedThing?.Stuff);
 				}
 				return result;
 			}, false, -0.5f);
@@ -631,7 +635,7 @@ namespace AnimalJobs
 			{
 				__result = ((Func<IEnumerable<Thing>>)delegate
 				{
-					Log.Message("butcherproduct patched", false);
+					Log.Message("butcherproduct patched");
 					Pawn innerPawn = __instance.InnerPawn;
 					return ((Thing)innerPawn).ButcherProducts(butcher, efficiency);
 				})();
@@ -727,7 +731,7 @@ namespace AnimalJobs
 
 			if (catchFish.pawn.skills != null)
 			{
-				fishingSkillLevel = catchFish.pawn.skills.AverageOfRelevantSkillsFor(RBB_Code.WorkTypeDefOf.Fishing);
+				fishingSkillLevel = catchFish.pawn.skills.AverageOfRelevantSkillsFor(Fishing);
 			}
 			else
 			{
@@ -762,7 +766,7 @@ namespace AnimalJobs
 					catchFish.fishingRodMote.exactPosition = fishingSpot.fishingSpotCell.ToVector3Shifted();
 					catchFish.fishingRodMote.Scale = 1f;
 					GenSpawn.Spawn(catchFish.fishingRodMote, fishingSpot.fishingSpotCell, fishingSpot.Map, WipeMode.Vanish);
-					WorkTypeDef fishing = RBB_Code.WorkTypeDefOf.Fishing;
+					WorkTypeDef fishing = Fishing;
 					if (catchFish.pawn.skills != null)
 					{
 						passion = catchFish.pawn.skills.MaxPassionOfRelevantSkillsFor(fishing);
@@ -1583,6 +1587,5 @@ namespace AnimalJobs
 			yield break;
 		}
 		
-		private static readonly Type patchType = typeof(HarmonyPatches);
 	}
 }

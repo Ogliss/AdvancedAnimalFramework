@@ -25,33 +25,35 @@ namespace AnimalJobs
 			this.FailOnDespawnedNullOrForbidden(TargetIndex.A);
 			yield return Toils_Reserve.Reserve(TargetIndex.A, 1, -1, null);
 			yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch);
-			Toil repair = new Toil();
-			repair.initAction = delegate()
-			{
-				this.ticksToNextRepair = 80f;
-			};
-			repair.tickAction = delegate()
-			{
-				Pawn actor = base.CurToil.actor;
-				float statValue = actor.GetStatValue(StatDefOf.ConstructionSpeed, true);
-				this.ticksToNextRepair -= statValue;
-				bool flag = this.ticksToNextRepair <= 0f;
-				if (flag)
-				{
-					this.ticksToNextRepair += 20f;
-					Thing targetThingA = base.TargetThingA;
-					int hitPoints = targetThingA.HitPoints;
-					targetThingA.HitPoints = hitPoints + 1;
-					base.TargetThingA.HitPoints = Mathf.Min(base.TargetThingA.HitPoints, base.TargetThingA.MaxHitPoints);
-					base.Map.listerBuildingsRepairable.Notify_BuildingRepaired((Building)base.TargetThingA);
-					bool flag2 = base.TargetThingA.HitPoints == base.TargetThingA.MaxHitPoints;
-					if (flag2)
-					{
-						actor.jobs.EndCurrentJob(JobCondition.Succeeded, true, true);
-					}
-				}
-			};
-			repair.FailOnCannotTouch(TargetIndex.A, PathEndMode.Touch);
+            Toil repair = new Toil
+            {
+                initAction = delegate ()
+                {
+                    this.ticksToNextRepair = 80f;
+                },
+                tickAction = delegate ()
+                {
+                    Pawn actor = base.CurToil.actor;
+                    float statValue = actor.GetStatValue(StatDefOf.ConstructionSpeed, true);
+                    this.ticksToNextRepair -= statValue;
+                    bool flag = this.ticksToNextRepair <= 0f;
+                    if (flag)
+                    {
+                        this.ticksToNextRepair += 20f;
+                        Thing targetThingA = base.TargetThingA;
+                        int hitPoints = targetThingA.HitPoints;
+                        targetThingA.HitPoints = hitPoints + 1;
+                        base.TargetThingA.HitPoints = Mathf.Min(base.TargetThingA.HitPoints, base.TargetThingA.MaxHitPoints);
+                        base.Map.listerBuildingsRepairable.Notify_BuildingRepaired((Building)base.TargetThingA);
+                        bool flag2 = base.TargetThingA.HitPoints == base.TargetThingA.MaxHitPoints;
+                        if (flag2)
+                        {
+                            actor.jobs.EndCurrentJob(JobCondition.Succeeded, true, true);
+                        }
+                    }
+                }
+            };
+            repair.FailOnCannotTouch(TargetIndex.A, PathEndMode.Touch);
 			repair.WithEffect(base.TargetThingA.def.repairEffect, TargetIndex.A);
 			repair.defaultCompleteMode = ToilCompleteMode.Never;
 			yield return repair;

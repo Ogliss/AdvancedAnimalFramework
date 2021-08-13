@@ -9,7 +9,7 @@ namespace AnimalWeapons
 	public class JobGiver_WPAutoMeleeWeapon : ThinkNode_JobGiver
 	{
 		// Token: 0x06000029 RID: 41 RVA: 0x000031F0 File Offset: 0x000013F0
-		protected override Job TryGiveJob(Pawn pawn)
+		public override Job TryGiveJob(Pawn pawn)
 		{
 			bool flag = pawn.Downed || pawn.CurJob != null;
 			Job result;

@@ -16,7 +16,7 @@ namespace AnimalWeapons
 		}
 
 		// Token: 0x0600003B RID: 59 RVA: 0x00003CBC File Offset: 0x00001EBC
-		protected override bool Satisfied(Pawn pawn)
+		public override bool Satisfied(Pawn pawn)
 		{
 			bool flag = pawn.health.summaryHealth.SummaryHealthPercent < this.threshold;
 			bool result;

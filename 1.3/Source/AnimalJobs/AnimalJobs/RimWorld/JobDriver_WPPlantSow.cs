@@ -56,7 +56,7 @@ namespace AnimalJobs
 				bool flag = plant.LifeStage > PlantLifeStage.Sowing;
 				if (flag)
 				{
-					Log.Error(this?.ToString() + " getting sowing work while not in Sowing life stage.", false);
+					Log.Error(this?.ToString() + " getting sowing work while not in Sowing life stage.");
 				}
 				this.sowWorkDone += num;
 				bool flag2 = this.sowWorkDone >= plant.def.plant.sowWork;

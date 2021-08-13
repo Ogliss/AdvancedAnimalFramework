@@ -9,7 +9,7 @@ namespace AnimalWeapons
 	public class JobGiver_WPAttack : ThinkNode_JobGiver
 	{
 		// Token: 0x06000022 RID: 34 RVA: 0x00002D28 File Offset: 0x00000F28
-		protected override Job TryGiveJob(Pawn pawn)
+		public override Job TryGiveJob(Pawn pawn)
 		{
 			bool flag = pawn.Downed || pawn.Dead || pawn.equipment.PrimaryEq == null;
 			Job result;

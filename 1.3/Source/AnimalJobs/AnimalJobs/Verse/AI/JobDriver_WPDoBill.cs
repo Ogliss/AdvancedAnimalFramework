@@ -175,7 +175,7 @@ namespace AnimalJobs
 				{
 					string str = "JumpToAlsoCollectTargetInQueue run on ";
 					Pawn pawn = actor;
-					Log.Error(str + ((pawn != null) ? pawn.ToString() : null) + " who is not carrying something.", false);
+					Log.Error(str + (pawn?.ToString()) + " who is not carrying something.");
 				}
 				else
 				{

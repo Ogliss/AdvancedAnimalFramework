@@ -27,14 +27,14 @@ namespace AnimalJobs
 						List<Thing> list = Toils_WPRecipe.CalculateIngredients(curJob, actor);
 						string str = "ingredient list in toil_wprecipe";
 						List<Thing> list2 = list;
-						Log.Message(str + ((list2 != null) ? list2.ToString() : null), false);
+						Log.Message(str + (list2?.ToString()));
 						Thing thing = Toils_WPRecipe.CalculateDominantIngredient(curJob, list);
 						for (int i = 0; i < list.Count; i++)
 						{
 							Thing thing2 = list[i];
 							string str2 = "ingredient in toil_wprecipe";
 							Thing thing3 = list[i];
-							Log.Message(str2 + ((thing3 != null) ? thing3.ToString() : null), false);
+							Log.Message(str2 + (thing3?.ToString()));
 							actor.Map.designationManager.RemoveAllDesignationsOn(thing2, false);
 							bool spawned = thing2.Spawned;
 							if (spawned)
@@ -79,7 +79,7 @@ namespace AnimalJobs
 				}
 				else
 				{
-					jobDriver_WPDoBill.workLeft = curJob.bill.recipe.WorkAmountTotal((unfinishedThing == null) ? null : unfinishedThing.Stuff);
+					jobDriver_WPDoBill.workLeft = curJob.bill.recipe.WorkAmountTotal(unfinishedThing?.Stuff);
 					bool flag2 = unfinishedThing != null;
 					if (flag2)
 					{
@@ -155,7 +155,7 @@ namespace AnimalJobs
 				Pawn actor = toil.actor;
 				Job curJob = actor.CurJob;
 				UnfinishedThing unfinishedThing = curJob.GetTarget(TargetIndex.B).Thing as UnfinishedThing;
-				return 1f - ((JobDriver_WPDoBill)actor.jobs.curDriver).workLeft / curJob.bill.recipe.WorkAmountTotal((unfinishedThing == null) ? null : unfinishedThing.Stuff);
+				return 1f - ((JobDriver_WPDoBill)actor.jobs.curDriver).workLeft / curJob.bill.recipe.WorkAmountTotal(unfinishedThing?.Stuff);
 			}, false, -0.5f);
 			toil.FailOn(() => toil.actor.CurJob.bill.suspended);
 			return toil;
@@ -164,46 +164,46 @@ namespace AnimalJobs
 		// Token: 0x0600002F RID: 47 RVA: 0x00003958 File Offset: 0x00001B58
 		public static Toil FinishRecipeAndStartStoringProduct()
 		{
-			Log.Message("start finish recipe, store product.", false);
+			Log.Message("start finish recipe, store product.");
 			Toil toil = new Toil();
 			toil.initAction = delegate()
 			{
-				Log.Message("in finishing", false);
+				Log.Message("in finishing");
 				Pawn actor = toil.actor;
 				Job curJob = actor.jobs.curJob;
 				string str = "curJob";
 				Job job = curJob;
-				string str2 = (job != null) ? job.ToString() : null;
+				string str2 = job?.ToString();
 				string str3 = " actor ";
 				Pawn pawn = actor;
-				Log.Message(str + str2 + str3 + ((pawn != null) ? pawn.ToString() : null), false);
+				Log.Message(str + str2 + str3 + (pawn?.ToString()));
 				JobDriver_WPDoBill jobDriver_WPDoBill = (JobDriver_WPDoBill)actor.jobs.curDriver;
 				List<Thing> list = Toils_WPRecipe.CalculateIngredients(curJob, actor);
 				for (int i = 0; i < list.Count; i++)
 				{
 					string str4 = "toils_wprecipe: ingredient[i] ";
 					Thing thing = list[i];
-					Log.Message(str4 + ((thing != null) ? thing.ToString() : null), false);
+					Log.Message(str4 + (thing?.ToString()));
 				}
 				Thing thing2 = Toils_WPRecipe.CalculateDominantIngredient(curJob, list);
 				string[] array = new string[8];
 				array[0] = "finishing: curJob.RecipeDef ";
 				int num = 1;
 				RecipeDef recipeDef = curJob.RecipeDef;
-				array[num] = ((recipeDef != null) ? recipeDef.ToString() : null);
+				array[num] = (recipeDef?.ToString());
 				array[2] = " actor ";
 				int num2 = 3;
 				Pawn pawn2 = actor;
-				array[num2] = ((pawn2 != null) ? pawn2.ToString() : null);
+				array[num2] = (pawn2?.ToString());
 				array[4] = " ingredients ";
 				int num3 = 5;
 				List<Thing> list2 = list;
-				array[num3] = ((list2 != null) ? list2.ToString() : null);
+				array[num3] = list2?.ToString();
 				array[6] = " dominantIngredient ";
 				int num4 = 7;
 				Thing thing3 = thing2;
-				array[num4] = ((thing3 != null) ? thing3.ToString() : null);
-				Log.Message(string.Concat(array), false);
+				array[num4] = thing3?.ToString();
+				Log.Message(string.Concat(array));
 				List<Thing> list3 = WPGenRecipe.MakeRecipeProducts(curJob.RecipeDef, actor, list, thing2).ToList<Thing>();
 				Toils_WPRecipe.ConsumeIngredients(list, curJob.RecipeDef, actor.Map);
 				curJob.bill.Notify_IterationCompleted(actor, list);
@@ -221,7 +221,7 @@ namespace AnimalJobs
 					{
 						for (int j = 0; j < list3.Count; j++)
 						{
-							bool flag3 = !GenPlace.TryPlaceThing(list3[j], actor.Position, actor.Map, ThingPlaceMode.Near, null, null, default(Rot4));
+							bool flag3 = !GenPlace.TryPlaceThing(list3[j], actor.Position, actor.Map, ThingPlaceMode.Near, null, null, default);
 							if (flag3)
 							{
 								Log.Error(string.Concat(new object[]
@@ -231,7 +231,7 @@ namespace AnimalJobs
 									list3[j],
 									" near ",
 									actor.Position
-								}), false);
+								}));
 							}
 						}
 						actor.jobs.EndCurrentJob(JobCondition.Succeeded, true, true);
@@ -243,7 +243,7 @@ namespace AnimalJobs
 						{
 							for (int k = 1; k < list3.Count; k++)
 							{
-								bool flag5 = !GenPlace.TryPlaceThing(list3[k], actor.Position, actor.Map, ThingPlaceMode.Near, null, null, default(Rot4));
+								bool flag5 = !GenPlace.TryPlaceThing(list3[k], actor.Position, actor.Map, ThingPlaceMode.Near, null, null, default);
 								if (flag5)
 								{
 									Log.Error(string.Concat(new object[]
@@ -253,7 +253,7 @@ namespace AnimalJobs
 										list3[k],
 										" near ",
 										actor.Position
-									}), false);
+									}));
 								}
 							}
 						}
@@ -269,7 +269,7 @@ namespace AnimalJobs
 						}
 						else
 						{
-							bool flag7 = !GenPlace.TryPlaceThing(list3[0], actor.Position, actor.Map, ThingPlaceMode.Near, null, null, default(Rot4));
+							bool flag7 = !GenPlace.TryPlaceThing(list3[0], actor.Position, actor.Map, ThingPlaceMode.Near, null, null, default);
 							if (flag7)
 							{
 								Log.Error(string.Concat(new object[]
@@ -278,7 +278,7 @@ namespace AnimalJobs
 									list3[0],
 									" near ",
 									actor.Position
-								}), false);
+								}));
 							}
 							actor.jobs.EndCurrentJob(JobCondition.Succeeded, true, true);
 						}
@@ -320,7 +320,7 @@ namespace AnimalJobs
 								job.placedThings[i].Count,
 								" for job ",
 								job
-							}), false);
+							}));
 						}
 						else
 						{
@@ -340,7 +340,7 @@ namespace AnimalJobs
 							{
 								string str = "Tried to add ingredient from job placed targets twice: ";
 								Thing thing2 = thing;
-								Log.Error(str + ((thing2 != null) ? thing2.ToString() : null), false);
+								Log.Error(str + (thing2?.ToString()));
 							}
 							else
 							{
@@ -410,7 +410,7 @@ namespace AnimalJobs
 			for (int i = 0; i < ingredients.Count; i++)
 			{
 				recipe.Worker.ConsumeIngredient(ingredients[i], recipe, map);
-				Log.Message("destroying ingredient", false);
+				Log.Message("destroying ingredient");
 			}
 		}
 

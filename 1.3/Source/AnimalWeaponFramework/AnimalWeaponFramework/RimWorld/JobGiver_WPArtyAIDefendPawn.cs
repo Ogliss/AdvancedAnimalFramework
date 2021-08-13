@@ -37,7 +37,7 @@ namespace AnimalWeapons
 		}
 
 		// Token: 0x06000011 RID: 17 RVA: 0x00002590 File Offset: 0x00000790
-		protected override Job TryGiveJob(Pawn pawn)
+		public override Job TryGiveJob(Pawn pawn)
 		{
 			Pawn defendee = this.GetDefendee(pawn);
 			bool flag = defendee == null;
@@ -52,7 +52,7 @@ namespace AnimalWeapons
 				bool flag2 = carriedBy != null;
 				if (flag2)
 				{
-					bool flag3 = !pawn.CanReach(carriedBy, PathEndMode.OnCell, Danger.Deadly, false, TraverseMode.ByPawn);
+					bool flag3 = !pawn.CanReach(carriedBy, PathEndMode.OnCell, Danger.Deadly, false, false, TraverseMode.ByPawn);
 					if (flag3)
 					{
 						return null;
@@ -60,7 +60,7 @@ namespace AnimalWeapons
 				}
 				else
 				{
-					bool flag4 = !defendee.Spawned || !pawn.CanReach(defendee, PathEndMode.OnCell, Danger.Deadly, false, TraverseMode.ByPawn);
+					bool flag4 = !defendee.Spawned || !pawn.CanReach(defendee, PathEndMode.OnCell, Danger.Deadly, false, false, TraverseMode.ByPawn);
 					if (flag4)
 					{
 						return null;

@@ -8,7 +8,7 @@ namespace AnimalWeapons
     public class ThinkNode_ConditionalWPArtyUnleashed : ThinkNode_Conditional
 	{
 		// Token: 0x06000035 RID: 53 RVA: 0x00003A8C File Offset: 0x00001C8C
-		protected override bool Satisfied(Pawn pawn)
+		public override bool Satisfied(Pawn pawn)
 		{
 			bool flag = !pawn.Spawned || pawn.Downed || pawn.Dead || pawn.Faction == null || pawn.playerSettings.Master == null || pawn.playerSettings == null || !pawn.playerSettings.RespectsMaster;
 			bool result;

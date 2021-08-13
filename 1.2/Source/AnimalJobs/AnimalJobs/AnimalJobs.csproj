@@ -32,11 +32,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Quarry">
-      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\2007576583\1.1\Assemblies\Quarry.dll</HintPath>
+      <HintPath>..\..\..\..\..\Quarry\1.1\Assemblies\Quarry.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Rainbeau%27s Fishing">
-      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\2034028432\1.2\Assemblies\Rainbeau's Fishing.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\workshop\content\294100\2034028432\1.2\Assemblies\Rainbeau's Fishing.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Core" />
@@ -96,10 +96,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Rimworld.Ref">
-      <Version>1.2.2753</Version>
+      <Version>1.2.2905</Version>
     </PackageReference>
     <PackageReference Include="Lib.Harmony">
-      <Version>2.0.2</Version>
+      <Version>2.1.0</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

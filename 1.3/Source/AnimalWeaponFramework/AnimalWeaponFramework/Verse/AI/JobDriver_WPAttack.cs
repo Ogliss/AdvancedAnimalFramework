@@ -29,7 +29,7 @@ namespace AnimalWeapons
 		}
 
 		// Token: 0x06000054 RID: 84 RVA: 0x0000427A File Offset: 0x0000247A
-		protected override IEnumerable<Toil> MakeNewToils()
+		public override IEnumerable<Toil> MakeNewToils()
 		{
 			yield return Toils_General.DoAtomic(delegate
 			{
@@ -42,7 +42,7 @@ namespace AnimalWeapons
 			});
 			yield return Toils_Combat.TrySetJobToUseAttackVerb(TargetIndex.A);
 			yield return Toils_Misc.ThrowColonistAttackingMote(TargetIndex.A);
-			yield return Toils_Combat.GotoCastPosition(TargetIndex.A, false, 1f);
+			yield return Toils_Combat.GotoCastPosition(TargetIndex.A, TargetIndex.None,  false, 1f);
 			yield return Toils_Combat.CastVerb(TargetIndex.A, true);
 			yield break;
 		}

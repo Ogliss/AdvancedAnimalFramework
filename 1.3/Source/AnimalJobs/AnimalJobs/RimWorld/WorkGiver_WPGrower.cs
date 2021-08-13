@@ -68,7 +68,7 @@ namespace AnimalJobs
 					{
 						string str = "Grow zone has 0 cells: ";
 						Zone_Growing zone_Growing = growZone;
-						Log.ErrorOnce(str + (zone_Growing?.ToString()), -563487, false);
+						Log.ErrorOnce(str + (zone_Growing?.ToString()), -563487);
 					}
 					else
 					{

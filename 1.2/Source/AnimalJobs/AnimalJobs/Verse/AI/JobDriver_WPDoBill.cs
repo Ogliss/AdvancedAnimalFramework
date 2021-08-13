@@ -72,7 +72,7 @@ namespace AnimalJobs
 		}
 
 		// Token: 0x0600001D RID: 29 RVA: 0x0000351E File Offset: 0x0000171E
-		protected override IEnumerable<Toil> MakeNewToils()
+		public override IEnumerable<Toil> MakeNewToils()
 		{
 			base.AddEndCondition(delegate
 			{

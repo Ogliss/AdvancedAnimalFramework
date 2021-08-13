@@ -22,7 +22,7 @@ namespace AnimalJobs
 		}
 
 		// Token: 0x06000015 RID: 21 RVA: 0x00003104 File Offset: 0x00001304
-		protected override Job TryGiveJob(Pawn pawn)
+		public override Job TryGiveJob(Pawn pawn)
 		{
 			Region region = pawn.GetRegion(RegionType.Set_Passable);
 			bool flag = region == null;

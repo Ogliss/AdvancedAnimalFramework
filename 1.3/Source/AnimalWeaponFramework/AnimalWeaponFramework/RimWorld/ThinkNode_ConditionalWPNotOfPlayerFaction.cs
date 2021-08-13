@@ -8,7 +8,7 @@ namespace AnimalWeapons
     public class ThinkNode_ConditionalWPNotOfPlayerFaction : ThinkNode_Conditional
 	{
 		// Token: 0x06000040 RID: 64 RVA: 0x00003D84 File Offset: 0x00001F84
-		protected override bool Satisfied(Pawn pawn)
+		public override bool Satisfied(Pawn pawn)
 		{
 			bool flag = !pawn.Spawned || pawn.Downed || pawn.Dead;
 			bool result;
