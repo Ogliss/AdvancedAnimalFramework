@@ -331,31 +331,27 @@ namespace AnimalJobs
 		// Token: 0x060000E3 RID: 227 RVA: 0x00007978 File Offset: 0x00005B78
 		public static BuildableDef BuiltDefOf(ThingDef def)
 		{
-			return (def.entityDefToBuild == null) ? def : def.entityDefToBuild;
+			return def.entityDefToBuild ?? def;
 		}
 
 		// Token: 0x060000E4 RID: 228 RVA: 0x0000799C File Offset: 0x00005B9C
 		public static bool CanPlaceBlueprintOver(BuildableDef newDef, ThingDef oldDef)
 		{
-			bool everHaulable = oldDef.EverHaulable;
 			bool result;
-			if (everHaulable)
+			if (oldDef.EverHaulable)
 			{
 				result = true;
 			}
 			else
 			{
 				TerrainDef terrainDef = newDef as TerrainDef;
-				bool flag = terrainDef != null;
-				if (flag)
+				if (terrainDef != null)
 				{
-					bool flag2 = oldDef.category == ThingCategory.Building && !terrainDef.affordances.Contains(oldDef.terrainAffordanceNeeded);
-					if (flag2)
+					if (oldDef.category == ThingCategory.Building && !terrainDef.affordances.Contains(oldDef.terrainAffordanceNeeded))
 					{
 						return false;
 					}
-					bool flag3 = (oldDef.IsBlueprint || oldDef.IsFrame) && !terrainDef.affordances.Contains(oldDef.entityDefToBuild.terrainAffordanceNeeded);
-					if (flag3)
+					if ((oldDef.IsBlueprint || oldDef.IsFrame) && !terrainDef.affordances.Contains(oldDef.entityDefToBuild.terrainAffordanceNeeded))
 					{
 						return false;
 					}
@@ -363,43 +359,35 @@ namespace AnimalJobs
 				ThingDef thingDef = newDef as ThingDef;
 				BuildableDef buildableDef = WPGenConstruct.BuiltDefOf(oldDef);
 				ThingDef thingDef2 = buildableDef as ThingDef;
-				bool flag4 = oldDef == ThingDefOf.SteamGeyser && !newDef.ForceAllowPlaceOver(oldDef);
-				if (flag4)
+				if (oldDef == ThingDefOf.SteamGeyser && !newDef.ForceAllowPlaceOver(oldDef))
 				{
 					result = false;
 				}
 				else
 				{
-					bool flag5 = oldDef.category == ThingCategory.Plant && oldDef.passability == Traversability.Impassable && thingDef != null && thingDef.category == ThingCategory.Building && !thingDef.building.canPlaceOverImpassablePlant;
-					if (flag5)
+					if (oldDef.category == ThingCategory.Plant && oldDef.passability == Traversability.Impassable && thingDef != null && thingDef.category == ThingCategory.Building && !thingDef.building.canPlaceOverImpassablePlant)
 					{
 						result = false;
 					}
 					else
 					{
-						bool flag6 = oldDef.category == ThingCategory.Building || oldDef.IsBlueprint || oldDef.IsFrame;
-						if (flag6)
+						if (oldDef.category == ThingCategory.Building || oldDef.IsBlueprint || oldDef.IsFrame)
 						{
-							bool flag7 = thingDef != null;
-							if (flag7)
+							if (thingDef != null)
 							{
-								bool flag8 = !thingDef.IsEdifice();
-								if (flag8)
+								if (!thingDef.IsEdifice())
 								{
 									return (oldDef.building == null || oldDef.building.canBuildNonEdificesUnder) && (!thingDef.EverTransmitsPower || !oldDef.EverTransmitsPower);
 								}
-								bool flag9 = thingDef.IsEdifice() && oldDef != null && oldDef.category == ThingCategory.Building && !oldDef.IsEdifice();
-								if (flag9)
+								if (thingDef.IsEdifice() && oldDef != null && oldDef.category == ThingCategory.Building && !oldDef.IsEdifice())
 								{
 									return thingDef.building == null || thingDef.building.canBuildNonEdificesUnder;
 								}
-								bool flag10 = thingDef2 != null && thingDef2 == ThingDefOf.Wall && thingDef.building != null && thingDef.building.canPlaceOverWall;
-								if (flag10)
+								if (thingDef2 != null && thingDef2 == ThingDefOf.Wall && thingDef.building != null && thingDef.building.canPlaceOverWall)
 								{
 									return true;
 								}
-								bool flag11 = newDef != ThingDefOf.PowerConduit && buildableDef == ThingDefOf.PowerConduit;
-								if (flag11)
+								if (newDef != ThingDefOf.PowerConduit && buildableDef == ThingDefOf.PowerConduit)
 								{
 									return true;
 								}
@@ -488,7 +476,7 @@ namespace AnimalJobs
 							constructible.ToStringSafe<Thing>(),
 							" at ",
 							constructible.Position
-						}), 6429262, false);
+						}), 6429262);
 					}
 					else
 					{

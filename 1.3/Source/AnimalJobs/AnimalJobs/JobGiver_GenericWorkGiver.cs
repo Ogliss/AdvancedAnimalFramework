@@ -195,7 +195,7 @@ namespace AnimalJobs
 							worker2.def.defName,
 							": ",
 							ex.ToString()
-						}), false);
+						}));
 					}
 					finally
 					{
@@ -226,7 +226,7 @@ namespace AnimalJobs
 							" but yielded no actual job for pawn ",
 							pawn,
 							". The CanGiveJob and JobOnX methods may not be synchronized."
-						}), 6112651, false);
+						}), 6112651);
 					}
 					num = worker2.def.priorityInType;
 				}
@@ -311,7 +311,7 @@ namespace AnimalJobs
 						giver.def.defName,
 						": ",
 						ex.ToString()
-					}), false);
+					}));
 				}
 				result = null;
 			}

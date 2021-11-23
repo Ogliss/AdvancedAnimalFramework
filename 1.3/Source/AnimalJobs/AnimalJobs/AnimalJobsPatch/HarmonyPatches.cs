@@ -78,27 +78,23 @@ namespace AnimalJobs
 			}
 
 		}
-		// Token: 0x060000EA RID: 234 RVA: 0x00008318 File Offset: 0x00006518
+
 		public static void CanConstruct_Prefix(ref bool __result, Thing t, Pawn p, bool checkSkills = true, bool forced = false)
 		{
-			bool flag = !p.kindDef.RaceProps.Humanlike;
-			if (flag)
+			if (p.kindDef.RaceProps.Animal)
 			{
-				bool flag2 = GenConstruct.FirstBlockingThing(t, p) != null;
-				if (flag2)
+				if (GenConstruct.FirstBlockingThing(t, p) != null)
 				{
 					__result = false;
 				}
 				LocalTargetInfo target = t;
 				PathEndMode peMode = PathEndMode.Touch;
 				Danger maxDanger = (!forced) ? p.NormalMaxDanger() : Danger.Deadly;
-				bool flag3 = !p.CanReserveAndReach(target, peMode, maxDanger, 1, -1, null, forced);
-				if (flag3)
+				if (!p.CanReserveAndReach(target, peMode, maxDanger, 1, -1, null, forced))
 				{
 					__result = false;
 				}
-				bool flag4 = t.IsBurning();
-				if (flag4)
+				if (t.IsBurning())
 				{
 					__result = false;
 				}
@@ -427,7 +423,7 @@ namespace AnimalJobs
 		// Token: 0x060000EF RID: 239 RVA: 0x00008640 File Offset: 0x00006840
 		public static bool CompleteConstruction_Prefix(Frame __instance, Pawn worker)
 		{
-			bool flag = !worker.RaceProps.Humanlike;
+			bool flag = !worker.RaceProps.Humanlike && !worker.GetType().Name.Contains("X2_AIRobot");
 			bool result;
 			if (flag)
 			{

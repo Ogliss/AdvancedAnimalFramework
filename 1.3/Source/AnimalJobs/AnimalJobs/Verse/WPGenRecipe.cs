@@ -22,7 +22,7 @@ namespace AnimalJobs
 				(ingredients != null) ? ingredients.ToString() : null,
 				" dominantIngredient ",
 				(dominantIngredient != null) ? dominantIngredient.ToString() : null
-			}), false);
+			}));
 			bool flag = recipeDef.efficiencyStat == null;
 			float efficiency;
 			if (flag)
@@ -104,30 +104,30 @@ namespace AnimalJobs
 			{
 				string str = "special recipedef not null";
 				List<SpecialProductType> specialProducts = recipeDef.specialProducts;
-				Log.Message(str + ((specialProducts != null) ? specialProducts.ToString() : null), false);
-				Log.Message("recipeDef.specialProducts.Count " + recipeDef.specialProducts.Count.ToString(), false);
+				Log.Message(str + ((specialProducts != null) ? specialProducts.ToString() : null));
+				Log.Message("recipeDef.specialProducts.Count " + recipeDef.specialProducts.Count.ToString());
 				int num2;
 				for (int k = 0; k < recipeDef.specialProducts.Count; k = num2 + 1)
 				{
-					Log.Message("recipeDef.specialProducts[j] " + recipeDef.specialProducts[k].ToString(), false);
-					Log.Message("ingredients.Count " + ingredients.Count.ToString(), false);
+					Log.Message("recipeDef.specialProducts[j] " + recipeDef.specialProducts[k].ToString());
+					Log.Message("ingredients.Count " + ingredients.Count.ToString());
 					string str2 = "recipeDef.ingredients ";
 					List<IngredientCount> ingredients2 = recipeDef.ingredients;
-					Log.Message(str2 + ((ingredients2 != null) ? ingredients2.ToString() : null), false);
+					Log.Message(str2 + ((ingredients2 != null) ? ingredients2.ToString() : null));
 					for (int l = 0; l < ingredients.Count; l = num2 + 1)
 					{
 						Thing ing = ingredients[l];
 						string str3 = "ingredients[k] ";
 						Thing thing = ingredients[l];
-						Log.Message(str3 + ((thing != null) ? thing.ToString() : null), false);
+						Log.Message(str3 + ((thing != null) ? thing.ToString() : null));
 						string str4 = "ing ";
 						Thing thing2 = ing;
-						Log.Message(str4 + ((thing2 != null) ? thing2.ToString() : null), false);
+						Log.Message(str4 + ((thing2 != null) ? thing2.ToString() : null));
 						SpecialProductType specialProductType = recipeDef.specialProducts[k];
 						bool flag9 = specialProductType > SpecialProductType.Butchery;
 						if (flag9)
 						{
-							Log.Message("not butchery", false);
+							Log.Message("not butchery");
 							bool flag10 = specialProductType == SpecialProductType.Smelted;
 							if (flag10)
 							{
@@ -139,7 +139,7 @@ namespace AnimalJobs
 						}
 						else
 						{
-							Log.Message("butchery", false);
+							Log.Message("butchery");
 							foreach (Thing product3 in ing.ButcherProducts(worker, efficiency))
 							{
 								string[] array = new string[8];
@@ -153,7 +153,7 @@ namespace AnimalJobs
 								array[5] = ((recipeDef != null) ? recipeDef.ToString() : null);
 								array[6] = " worker ";
 								array[7] = ((worker != null) ? worker.ToString() : null);
-								Log.Message(string.Concat(array), false);
+								Log.Message(string.Concat(array));
 								yield return WPGenRecipe.PostProcessProduct(product3, recipeDef, worker);
 							}
 						}
@@ -163,7 +163,7 @@ namespace AnimalJobs
 					num2 = k;
 				}
 			}
-			Log.Message("yield break", false);
+			Log.Message("yield break");
 			yield break;
 		}
 
@@ -179,7 +179,7 @@ namespace AnimalJobs
 			array[3] = ((recipeDef != null) ? recipeDef.ToString() : null);
 			array[4] = " worker ";
 			array[5] = ((worker != null) ? worker.ToString() : null);
-			Log.Message(string.Concat(array), false);
+			Log.Message(string.Concat(array));
 			CompQuality compQuality = product.TryGetComp<CompQuality>();
 			bool flag = compQuality != null;
 			if (flag)
@@ -187,7 +187,7 @@ namespace AnimalJobs
 				bool flag2 = recipeDef.workSkill == null;
 				if (flag2)
 				{
-					Log.Error(((recipeDef != null) ? recipeDef.ToString() : null) + " needs workSkill because it creates a product with a quality.", false);
+					Log.Error(((recipeDef != null) ? recipeDef.ToString() : null) + " needs workSkill because it creates a product with a quality.");
 				}
 				int relevantSkillLevel = 1;
 				QualityCategory q = QualityUtility.GenerateQualityCreatedByPawn(relevantSkillLevel, false);
@@ -219,7 +219,7 @@ namespace AnimalJobs
 			array2[3] = ((recipeDef != null) ? recipeDef.ToString() : null);
 			array2[4] = " worker ";
 			array2[5] = ((worker != null) ? worker.ToString() : null);
-			Log.Message(string.Concat(array2), false);
+			Log.Message(string.Concat(array2));
 			return product;
 		}
 	}
