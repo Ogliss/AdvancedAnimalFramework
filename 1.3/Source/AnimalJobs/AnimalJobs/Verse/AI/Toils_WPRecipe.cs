@@ -7,10 +7,8 @@ using Verse.AI;
 
 namespace AnimalJobs
 {
-	// Token: 0x0200000E RID: 14
 	public static class Toils_WPRecipe
 	{
-		// Token: 0x0600002D RID: 45 RVA: 0x0000384C File Offset: 0x00001A4C
 		public static Toil MakeUnfinishedThingIfNeeded()
 		{
 			Toil toil = new Toil();
@@ -18,29 +16,23 @@ namespace AnimalJobs
 			{
 				Pawn actor = toil.actor;
 				Job curJob = actor.jobs.curJob;
-				bool flag = !curJob.RecipeDef.UsesUnfinishedThing;
-				if (!flag)
+				if (curJob.RecipeDef.UsesUnfinishedThing)
 				{
-					bool flag2 = curJob.GetTarget(TargetIndex.B).Thing is UnfinishedThing;
-					if (!flag2)
+					if (!(curJob.GetTarget(TargetIndex.B).Thing is UnfinishedThing))
 					{
 						List<Thing> list = Toils_WPRecipe.CalculateIngredients(curJob, actor);
 						string str = "ingredient list in toil_wprecipe";
 						List<Thing> list2 = list;
-						Log.Message(str + (list2?.ToString()));
+					//	Log.Message(str + (list2?.ToString()));
 						Thing thing = Toils_WPRecipe.CalculateDominantIngredient(curJob, list);
 						for (int i = 0; i < list.Count; i++)
 						{
 							Thing thing2 = list[i];
 							string str2 = "ingredient in toil_wprecipe";
 							Thing thing3 = list[i];
-							Log.Message(str2 + (thing3?.ToString()));
+						//	Log.Message(str2 + (thing3?.ToString()));
 							actor.Map.designationManager.RemoveAllDesignationsOn(thing2, false);
-							bool spawned = thing2.Spawned;
-							if (spawned)
-							{
-								thing2.DeSpawn(DestroyMode.Vanish);
-							}
+							if (thing2.Spawned) thing2.DeSpawn(DestroyMode.Vanish);
 						}
 						ThingDef stuff = (!curJob.RecipeDef.unfinishedThingDef.MadeFromStuff) ? null : thing.def;
 						UnfinishedThing unfinishedThing = (UnfinishedThing)ThingMaker.MakeThing(curJob.RecipeDef.unfinishedThingDef, stuff);
@@ -49,10 +41,7 @@ namespace AnimalJobs
 						unfinishedThing.ingredients = list;
 						CompColorable compColorable = unfinishedThing.TryGetComp<CompColorable>();
 						bool flag3 = compColorable != null;
-						if (flag3)
-						{
-							compColorable.SetColor(thing.DrawColor);
-						}
+						if (flag3) compColorable.SetColor(thing.DrawColor);
 						GenSpawn.Spawn(unfinishedThing, curJob.GetTarget(TargetIndex.A).Cell, actor.Map, WipeMode.Vanish);
 						curJob.SetTarget(TargetIndex.B, unfinishedThing);
 						actor.Reserve(unfinishedThing, curJob, 1, -1, null, true);
@@ -62,7 +51,6 @@ namespace AnimalJobs
 			return toil;
 		}
 
-		// Token: 0x0600002E RID: 46 RVA: 0x0000388C File Offset: 0x00001A8C
 		public static Toil DoRecipeWork()
 		{
 			Toil toil = new Toil();
@@ -72,19 +60,11 @@ namespace AnimalJobs
 				Job curJob = actor.jobs.curJob;
 				JobDriver_WPDoBill jobDriver_WPDoBill = (JobDriver_WPDoBill)actor.jobs.curDriver;
 				UnfinishedThing unfinishedThing = curJob.GetTarget(TargetIndex.B).Thing as UnfinishedThing;
-				bool flag = unfinishedThing != null && unfinishedThing.Initialized;
-				if (flag)
-				{
-					jobDriver_WPDoBill.workLeft = unfinishedThing.workLeft;
-				}
+				if (unfinishedThing != null && unfinishedThing.Initialized) jobDriver_WPDoBill.workLeft = unfinishedThing.workLeft;
 				else
 				{
 					jobDriver_WPDoBill.workLeft = curJob.bill.recipe.WorkAmountTotal(unfinishedThing?.Stuff);
-					bool flag2 = unfinishedThing != null;
-					if (flag2)
-					{
-						unfinishedThing.workLeft = jobDriver_WPDoBill.workLeft;
-					}
+					if (unfinishedThing != null) unfinishedThing.workLeft = jobDriver_WPDoBill.workLeft;
 				}
 				jobDriver_WPDoBill.billStartTick = Find.TickManager.TicksGame;
 				jobDriver_WPDoBill.ticksSpentDoingRecipeWork = 0;
@@ -96,54 +76,25 @@ namespace AnimalJobs
 				Job curJob = actor.jobs.curJob;
 				JobDriver_WPDoBill jobDriver_WPDoBill = (JobDriver_WPDoBill)actor.jobs.curDriver;
 				UnfinishedThing unfinishedThing = curJob.GetTarget(TargetIndex.B).Thing as UnfinishedThing;
-				bool flag = unfinishedThing != null && unfinishedThing.Destroyed;
-				if (flag)
-				{
-					actor.jobs.EndCurrentJob(JobCondition.Incompletable, true, true);
-				}
+				if (unfinishedThing != null && unfinishedThing.Destroyed) actor.jobs.EndCurrentJob(JobCondition.Incompletable, true, true);
 				else
 				{
 					jobDriver_WPDoBill.ticksSpentDoingRecipeWork++;
 					curJob.bill.Notify_PawnDidWork(actor);
 					IBillGiverWithTickAction billGiverWithTickAction = toil.actor.CurJob.GetTarget(TargetIndex.A).Thing as IBillGiverWithTickAction;
-					bool flag2 = billGiverWithTickAction != null;
-					if (flag2)
-					{
-						billGiverWithTickAction.UsedThisTick();
-					}
+					if (billGiverWithTickAction != null) billGiverWithTickAction.UsedThisTick();
 					float num = (curJob.RecipeDef.workSpeedStat != null) ? actor.GetStatValue(curJob.RecipeDef.workSpeedStat, true) : 1f;
 					Building_WorkTable building_WorkTable = jobDriver_WPDoBill.BillGiver as Building_WorkTable;
-					bool flag3 = building_WorkTable != null;
-					if (flag3)
-					{
-						num *= building_WorkTable.GetStatValue(StatDefOf.WorkTableWorkSpeedFactor, true);
-					}
-					bool fastCrafting = DebugSettings.fastCrafting;
-					if (fastCrafting)
-					{
-						num *= 30f;
-					}
+					if (building_WorkTable != null) num *= building_WorkTable.GetStatValue(StatDefOf.WorkTableWorkSpeedFactor, true);
+					if (DebugSettings.fastCrafting) num *= 30f;
 					jobDriver_WPDoBill.workLeft -= num;
-					bool flag4 = unfinishedThing != null;
-					if (flag4)
-					{
-						unfinishedThing.workLeft = jobDriver_WPDoBill.workLeft;
-					}
+					if (unfinishedThing != null) unfinishedThing.workLeft = jobDriver_WPDoBill.workLeft;
 					actor.GainComfortFromCellIfPossible(false);
-					bool flag5 = jobDriver_WPDoBill.workLeft <= 0f;
-					if (flag5)
-					{
-						jobDriver_WPDoBill.ReadyForNextToil();
-					}
-					bool usesUnfinishedThing = curJob.bill.recipe.UsesUnfinishedThing;
-					if (usesUnfinishedThing)
+					if (jobDriver_WPDoBill.workLeft <= 0f) jobDriver_WPDoBill.ReadyForNextToil();
+					if (curJob.bill.recipe.UsesUnfinishedThing)
 					{
 						int num2 = Find.TickManager.TicksGame - jobDriver_WPDoBill.billStartTick;
-						bool flag6 = num2 >= 3000 && num2 % 1000 == 0;
-						if (flag6)
-						{
-							actor.jobs.CheckForJobOverride();
-						}
+						if (num2 >= 3000 && num2 % 1000 == 0) actor.jobs.CheckForJobOverride();
 					}
 				}
 			};
@@ -161,14 +112,13 @@ namespace AnimalJobs
 			return toil;
 		}
 
-		// Token: 0x0600002F RID: 47 RVA: 0x00003958 File Offset: 0x00001B58
 		public static Toil FinishRecipeAndStartStoringProduct()
 		{
 			Log.Message("start finish recipe, store product.");
 			Toil toil = new Toil();
 			toil.initAction = delegate()
 			{
-				Log.Message("in finishing");
+			//	Log.Message("in finishing");
 				Pawn actor = toil.actor;
 				Job curJob = actor.jobs.curJob;
 				string str = "curJob";
@@ -183,7 +133,7 @@ namespace AnimalJobs
 				{
 					string str4 = "toils_wprecipe: ingredient[i] ";
 					Thing thing = list[i];
-					Log.Message(str4 + (thing?.ToString()));
+				//	Log.Message(str4 + (thing?.ToString()));
 				}
 				Thing thing2 = Toils_WPRecipe.CalculateDominantIngredient(curJob, list);
 				string[] array = new string[8];

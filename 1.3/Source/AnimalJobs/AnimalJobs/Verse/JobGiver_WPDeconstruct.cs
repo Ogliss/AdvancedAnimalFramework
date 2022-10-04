@@ -6,19 +6,13 @@ using Verse.AI;
 
 namespace AnimalJobs
 {
-	// Token: 0x02000005 RID: 5
 	public class JobGiver_WPDeconstruct : ThinkNode_JobGiver
 	{
-		// Token: 0x0600000B RID: 11 RVA: 0x00002BFC File Offset: 0x00000DFC
 		public override Job TryGiveJob(Pawn pawn)
 		{
 			Region region = pawn.GetRegion(RegionType.Set_Passable);
-			bool flag = region == null;
 			Job result;
-			if (flag)
-			{
-				result = null;
-			}
+			if (region == null) result = null;
 			else
 			{
 				IntVec3 position = pawn.Position;
@@ -29,8 +23,7 @@ namespace AnimalJobs
 					Building building = allBuildingsColonist[i];
 					foreach (Designation designation in pawn.Map.designationManager.AllDesignationsOn(building))
 					{
-						bool flag2 = building.Faction == pawn.Faction && designation.def == DesignationDefOf.Deconstruct && pawn.CanReserve(building, 1, -1, null, false);
-						if (flag2)
+						if (building.Faction == pawn.Faction && designation.def == DesignationDefOf.Deconstruct && pawn.CanReserve(building, 1, -1, null, false))
 						{
 							return new Job(WPJobDefOf.WPDeconstruct, building);
 						}

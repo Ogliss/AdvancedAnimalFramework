@@ -6,10 +6,8 @@ using Verse;
 
 namespace AnimalJobs
 {
-	// Token: 0x0200000A RID: 10
 	public static class WPGenRecipe
 	{
-		// Token: 0x06000017 RID: 23 RVA: 0x00003205 File Offset: 0x00001405
 		public static IEnumerable<Thing> MakeRecipeProducts(RecipeDef recipeDef, Pawn worker, List<Thing> ingredients, Thing dominantIngredient)
 		{
 			Log.Message(string.Concat(new string[]
@@ -23,43 +21,23 @@ namespace AnimalJobs
 				" dominantIngredient ",
 				(dominantIngredient != null) ? dominantIngredient.ToString() : null
 			}));
-			bool flag = recipeDef.efficiencyStat == null;
 			float efficiency;
-			if (flag)
-			{
-				efficiency = 1f;
-			}
-			else
-			{
-				efficiency = worker.GetStatValue(recipeDef.efficiencyStat, true);
-			}
-			bool flag2 = recipeDef.products != null;
-			if (flag2)
+			if (recipeDef.efficiencyStat == null) efficiency = 1f;
+			else efficiency = worker.GetStatValue(recipeDef.efficiencyStat, true);
+			if (recipeDef.products != null)
 			{
 				int num2;
 				for (int i = 0; i < recipeDef.products.Count; i = num2 + 1)
 				{
 					ThingDefCountClass prod = recipeDef.products[i];
-					bool madeFromStuff = prod.thingDef.MadeFromStuff;
 					ThingDef stuffDef;
-					if (madeFromStuff)
-					{
-						stuffDef = dominantIngredient.def;
-					}
-					else
-					{
-						stuffDef = null;
-					}
+					if (prod.thingDef.MadeFromStuff) stuffDef = dominantIngredient.def;
+					else stuffDef = null;
 					Thing product = ThingMaker.MakeThing(prod.thingDef, stuffDef);
 					product.stackCount = Mathf.CeilToInt((float)prod.count * efficiency);
-					bool flag3 = dominantIngredient != null;
-					if (flag3)
-					{
-						product.SetColor(dominantIngredient.DrawColor, false);
-					}
+					if (dominantIngredient != null) product.SetColor(dominantIngredient.DrawColor, false);
 					CompIngredients ingredientsComp = product.TryGetComp<CompIngredients>();
-					bool flag4 = ingredientsComp != null;
-					if (flag4)
+					if (ingredientsComp != null)
 					{
 						for (int j = 0; j < ingredients.Count; j = num2 + 1)
 						{
@@ -68,26 +46,25 @@ namespace AnimalJobs
 						}
 					}
 					CompFoodPoisonable foodPoisonable = product.TryGetComp<CompFoodPoisonable>();
-					bool flag5 = foodPoisonable != null;
-					if (flag5)
+					if (foodPoisonable != null)
 					{
 						float num = worker.GetStatValue(StatDefOf.FoodPoisonChance, true);
 						Room room = worker.GetRoom(RegionType.Set_Passable);
 						float chance = (room == null) ? RoomStatDefOf.FoodPoisonChance.roomlessScore : room.GetStat(RoomStatDefOf.FoodPoisonChance);
-						bool flag6 = Rand.Chance(chance);
-						if (flag6)
+						Rand.PushState();
+						if (Rand.Chance(chance))
 						{
 							foodPoisonable.SetPoisoned(FoodPoisonCause.FilthyKitchen);
 						}
 						else
 						{
 							float statValue = worker.GetStatValue(StatDefOf.FoodPoisonChance, true);
-							bool flag7 = Rand.Chance(statValue);
-							if (flag7)
+							if (Rand.Chance(statValue))
 							{
 								foodPoisonable.SetPoisoned(FoodPoisonCause.IncompetentCook);
 							}
 						}
+						Rand.PopState();
 						room = null;
 					}
 					yield return WPGenRecipe.PostProcessProduct(product, recipeDef, worker);
@@ -99,37 +76,34 @@ namespace AnimalJobs
 					num2 = i;
 				}
 			}
-			bool flag8 = recipeDef.specialProducts != null;
-			if (flag8)
+			if (recipeDef.specialProducts != null)
 			{
 				string str = "special recipedef not null";
 				List<SpecialProductType> specialProducts = recipeDef.specialProducts;
-				Log.Message(str + ((specialProducts != null) ? specialProducts.ToString() : null));
-				Log.Message("recipeDef.specialProducts.Count " + recipeDef.specialProducts.Count.ToString());
+			//	Log.Message(str + ((specialProducts != null) ? specialProducts.ToString() : null));
+			//	Log.Message("recipeDef.specialProducts.Count " + recipeDef.specialProducts.Count.ToString());
 				int num2;
 				for (int k = 0; k < recipeDef.specialProducts.Count; k = num2 + 1)
 				{
-					Log.Message("recipeDef.specialProducts[j] " + recipeDef.specialProducts[k].ToString());
-					Log.Message("ingredients.Count " + ingredients.Count.ToString());
+				//	Log.Message("recipeDef.specialProducts[j] " + recipeDef.specialProducts[k].ToString());
+				//	Log.Message("ingredients.Count " + ingredients.Count.ToString());
 					string str2 = "recipeDef.ingredients ";
 					List<IngredientCount> ingredients2 = recipeDef.ingredients;
-					Log.Message(str2 + ((ingredients2 != null) ? ingredients2.ToString() : null));
+				//	Log.Message(str2 + ((ingredients2 != null) ? ingredients2.ToString() : null));
 					for (int l = 0; l < ingredients.Count; l = num2 + 1)
 					{
 						Thing ing = ingredients[l];
 						string str3 = "ingredients[k] ";
 						Thing thing = ingredients[l];
-						Log.Message(str3 + ((thing != null) ? thing.ToString() : null));
+					//	Log.Message(str3 + ((thing != null) ? thing.ToString() : null));
 						string str4 = "ing ";
 						Thing thing2 = ing;
-						Log.Message(str4 + ((thing2 != null) ? thing2.ToString() : null));
+					//	Log.Message(str4 + ((thing2 != null) ? thing2.ToString() : null));
 						SpecialProductType specialProductType = recipeDef.specialProducts[k];
-						bool flag9 = specialProductType > SpecialProductType.Butchery;
-						if (flag9)
+						if (specialProductType > SpecialProductType.Butchery)
 						{
-							Log.Message("not butchery");
-							bool flag10 = specialProductType == SpecialProductType.Smelted;
-							if (flag10)
+						//	Log.Message("not butchery");
+							if (specialProductType == SpecialProductType.Smelted)
 							{
 								foreach (Thing product2 in ing.SmeltProducts(efficiency))
 								{
@@ -139,7 +113,7 @@ namespace AnimalJobs
 						}
 						else
 						{
-							Log.Message("butchery");
+						//	Log.Message("butchery");
 							foreach (Thing product3 in ing.ButcherProducts(worker, efficiency))
 							{
 								string[] array = new string[8];
@@ -153,7 +127,7 @@ namespace AnimalJobs
 								array[5] = ((recipeDef != null) ? recipeDef.ToString() : null);
 								array[6] = " worker ";
 								array[7] = ((worker != null) ? worker.ToString() : null);
-								Log.Message(string.Concat(array));
+							//	Log.Message(string.Concat(array));
 								yield return WPGenRecipe.PostProcessProduct(product3, recipeDef, worker);
 							}
 						}
@@ -163,11 +137,10 @@ namespace AnimalJobs
 					num2 = k;
 				}
 			}
-			Log.Message("yield break");
+		//	Log.Message("yield break");
 			yield break;
 		}
 
-		// Token: 0x06000018 RID: 24 RVA: 0x0000322C File Offset: 0x0000142C
 		private static Thing PostProcessProduct(Thing product, RecipeDef recipeDef, Pawn worker)
 		{
 			string[] array = new string[6];
@@ -179,20 +152,17 @@ namespace AnimalJobs
 			array[3] = ((recipeDef != null) ? recipeDef.ToString() : null);
 			array[4] = " worker ";
 			array[5] = ((worker != null) ? worker.ToString() : null);
-			Log.Message(string.Concat(array));
+		//	Log.Message(string.Concat(array));
 			CompQuality compQuality = product.TryGetComp<CompQuality>();
-			bool flag = compQuality != null;
-			if (flag)
+			if (compQuality != null)
 			{
-				bool flag2 = recipeDef.workSkill == null;
-				if (flag2)
+				if (recipeDef.workSkill == null)
 				{
 					Log.Error(((recipeDef != null) ? recipeDef.ToString() : null) + " needs workSkill because it creates a product with a quality.");
 				}
 				int relevantSkillLevel = 1;
 				QualityCategory q = QualityUtility.GenerateQualityCreatedByPawn(relevantSkillLevel, false);
-				bool flag3 = worker.InspirationDef == InspirationDefOf.Inspired_Creativity && (product.def.IsArt || (product.def.minifiedDef != null && product.def.minifiedDef.IsArt));
-				if (flag3)
+				if (worker.InspirationDef == InspirationDefOf.Inspired_Creativity && (product.def.IsArt || (product.def.minifiedDef != null && product.def.minifiedDef.IsArt)))
 				{
 					int relevantSkillLevel2 = 4;
 					q = QualityUtility.GenerateQualityCreatedByPawn(relevantSkillLevel2, false);
@@ -200,13 +170,11 @@ namespace AnimalJobs
 				compQuality.SetQuality(q, ArtGenerationContext.Colony);
 			}
 			CompArt compArt = product.TryGetComp<CompArt>();
-			bool flag4 = compArt != null;
-			if (flag4)
+			if (compArt != null)
 			{
 				compArt.JustCreatedBy(worker);
 			}
-			bool minifiable = product.def.Minifiable;
-			if (minifiable)
+			if (product.def.Minifiable)
 			{
 				product = product.MakeMinified();
 			}
@@ -219,7 +187,7 @@ namespace AnimalJobs
 			array2[3] = ((recipeDef != null) ? recipeDef.ToString() : null);
 			array2[4] = " worker ";
 			array2[5] = ((worker != null) ? worker.ToString() : null);
-			Log.Message(string.Concat(array2));
+		//	Log.Message(string.Concat(array2));
 			return product;
 		}
 	}

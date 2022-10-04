@@ -6,10 +6,8 @@ using Verse.AI;
 
 namespace AnimalJobs
 {
-	// Token: 0x02000002 RID: 2
 	public class JobGiver_GenericWorkGiver : ThinkNode
 	{
-		// Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
 		public override ThinkNode DeepCopy(bool resolve = true)
 		{
 			JobGiver_GenericWorkGiver jobGiver_GenericWorkGiver = (JobGiver_GenericWorkGiver)base.DeepCopy(resolve);
@@ -17,45 +15,23 @@ namespace AnimalJobs
 			return jobGiver_GenericWorkGiver;
 		}
 
-		// Token: 0x06000002 RID: 2 RVA: 0x0000207C File Offset: 0x0000027C
 		public override float GetPriority(Pawn pawn)
 		{
-			bool flag = pawn.workSettings == null || !pawn.workSettings.EverWork;
 			float result;
-			if (flag)
-			{
-				result = 9f;
-			}
+			if (pawn.workSettings == null || !pawn.workSettings.EverWork) result = 9f;
 			else
 			{
 				TimeAssignmentDef timeAssignmentDef = (pawn.timetable != null) ? pawn.timetable.CurrentAssignment : TimeAssignmentDefOf.Anything;
-				bool flag2 = timeAssignmentDef == TimeAssignmentDefOf.Anything;
-				if (flag2)
-				{
-					result = 5.5f;
-				}
+				if (timeAssignmentDef == TimeAssignmentDefOf.Anything) result = 5.5f;
 				else
 				{
-					bool flag3 = timeAssignmentDef == TimeAssignmentDefOf.Work;
-					if (flag3)
-					{
-						result = 9f;
-					}
+					if (timeAssignmentDef == TimeAssignmentDefOf.Work) result = 9f;
 					else
 					{
-						bool flag4 = timeAssignmentDef == TimeAssignmentDefOf.Sleep;
-						if (flag4)
-						{
-							result = 3f;
-						}
+						if (timeAssignmentDef == TimeAssignmentDefOf.Sleep) result = 3f;
 						else
 						{
-							bool flag5 = timeAssignmentDef == TimeAssignmentDefOf.Joy;
-							if (!flag5)
-							{
-								throw new NotImplementedException();
-							}
-							result = 2f;
+							if (timeAssignmentDef != TimeAssignmentDefOf.Joy) throw new NotImplementedException(); result = 2f;
 						}
 					}
 				}
@@ -63,19 +39,16 @@ namespace AnimalJobs
 			return result;
 		}
 
-		// Token: 0x06000003 RID: 3 RVA: 0x0000212C File Offset: 0x0000032C
 		public override ThinkResult TryIssueJobPackage(Pawn pawn, JobIssueParams jobParams)
 		{
-			bool isPrioritized = pawn.mindState.priorityWork.IsPrioritized;
-			if (isPrioritized)
+			if (pawn.mindState.priorityWork.IsPrioritized)
 			{
 				List<WorkGiverDef> workGiversByPriority = pawn.mindState.priorityWork.WorkGiver.workType.workGiversByPriority;
 				for (int i = 0; i < workGiversByPriority.Count; i++)
 				{
 					WorkGiver worker = workGiversByPriority[i].Worker;
 					Job job = this.GiverTryGiveJobPrioritized(pawn, worker, pawn.mindState.priorityWork.Cell);
-					bool flag = job != null;
-					if (flag)
+					if (job != null)
 					{
 						job.playerForced = true;
 						return new ThinkResult(job, this, new JobTag?(workGiversByPriority[i].tagToGive), false);
@@ -86,32 +59,23 @@ namespace AnimalJobs
 			int num = -999;
 			TargetInfo targetInfo = TargetInfo.Invalid;
 			WorkGiver_Scanner workGiver_Scanner = null;
-			bool flag2 = this.workGiverDef != null;
-			if (flag2)
+			if (this.workGiverDef != null)
 			{
 				WorkGiver worker2 = this.workGiverDef.Worker;
-				bool flag3 = worker2.def.priorityInType != num && targetInfo.IsValid;
-				if (flag3)
+				if (worker2.def.priorityInType != num && targetInfo.IsValid)
 				{
 					return ThinkResult.NoJob;
 				}
-				bool flag4 = this.PawnCanUseWorkGiver(pawn, worker2);
-				if (flag4)
+				if (this.PawnCanUseWorkGiver(pawn, worker2))
 				{
 					try
 					{
 						Job job2 = worker2.NonScanJob(pawn);
-						bool flag5 = job2 != null;
-						if (flag5)
-						{
-							return new ThinkResult(job2, this, new JobTag?(this.workGiverDef.tagToGive), false);
-						}
+						if (job2 != null) return new ThinkResult(job2, this, new JobTag?(this.workGiverDef.tagToGive), false);
 						WorkGiver_Scanner scanner = worker2 as WorkGiver_Scanner;
-						bool flag6 = scanner != null;
-						if (flag6)
+						if (scanner != null)
 						{
-							bool scanThings = worker2.def.scanThings;
-							if (scanThings)
+							if (worker2.def.scanThings)
 							{
 								Predicate<Thing> predicate = (Thing t) => !t.IsForbidden(pawn) && scanner.HasJobOnThing(pawn, t, false);
 								IEnumerable<Thing> enumerable = scanner.PotentialWorkThingsGlobal(pawn);
@@ -120,8 +84,7 @@ namespace AnimalJobs
 								if (prioritized)
 								{
 									IEnumerable<Thing> enumerable2 = enumerable;
-									bool flag7 = enumerable2 == null;
-									if (flag7)
+									if (enumerable2 == null)
 									{
 										enumerable2 = pawn.Map.listerThings.ThingsMatching(scanner.PotentialWorkThingRequest);
 									}
@@ -134,15 +97,13 @@ namespace AnimalJobs
 									bool forceAllowGlobalSearch = enumerable != null;
 									thing = GenClosest.ClosestThingReachable(pawn.Position, pawn.Map, scanner.PotentialWorkThingRequest, scanner.PathEndMode, TraverseParms.For(pawn, Danger.Deadly, TraverseMode.ByPawn, false), 9999f, validator2, enumerable, 0, scanner.MaxRegionsToScanBeforeGlobalSearch, forceAllowGlobalSearch, RegionType.Set_Passable, false);
 								}
-								bool flag8 = thing != null;
-								if (flag8)
+								if (thing != null)
 								{
 									targetInfo = thing;
 									workGiver_Scanner = scanner;
 								}
 							}
-							bool scanCells = worker2.def.scanCells;
-							if (scanCells)
+							if (worker2.def.scanCells)
 							{
 								IntVec3 position = pawn.Position;
 								float num2 = 99999f;
@@ -150,33 +111,28 @@ namespace AnimalJobs
 								bool prioritized2 = scanner.Prioritized;
 								foreach (IntVec3 intVec in scanner.PotentialWorkCellsGlobal(pawn))
 								{
-									bool flag9 = false;
+									bool flag = false;
 									float num4 = (float)(intVec - position).LengthHorizontalSquared;
-									bool flag10 = prioritized2;
-									if (flag10)
+									if (prioritized2)
 									{
-										bool flag11 = !intVec.IsForbidden(pawn) && scanner.HasJobOnCell(pawn, intVec, false) && pawn.CanReach(intVec, PathEndMode.Touch, Danger.None);
-										if (flag11)
+										if (!intVec.IsForbidden(pawn) && scanner.HasJobOnCell(pawn, intVec, false) && pawn.CanReach(intVec, PathEndMode.Touch, Danger.None))
 										{
 											float priority = scanner.GetPriority(pawn, intVec);
-											bool flag12 = priority > num3 || (priority == num3 && num4 < num2);
-											if (flag12)
+											if (priority > num3 || (priority == num3 && num4 < num2))
 											{
-												flag9 = true;
+												flag = true;
 												num3 = priority;
 											}
 										}
 									}
 									else
 									{
-										bool flag13 = num4 < num2 && !intVec.IsForbidden(pawn) && scanner.HasJobOnCell(pawn, intVec, false);
-										if (flag13)
+										if (num4 < num2 && !intVec.IsForbidden(pawn) && scanner.HasJobOnCell(pawn, intVec, false))
 										{
-											flag9 = true;
+											flag = true;
 										}
 									}
-									bool flag14 = flag9;
-									if (flag14)
+									if (flag)
 									{
 										targetInfo = new TargetInfo(intVec, pawn.Map, false);
 										workGiver_Scanner = scanner;
@@ -200,12 +156,10 @@ namespace AnimalJobs
 					finally
 					{
 					}
-					bool isValid = targetInfo.IsValid;
-					if (isValid)
+					if (targetInfo.IsValid)
 					{
-						bool hasThing = targetInfo.HasThing;
 						Job job3;
-						if (hasThing)
+						if (targetInfo.HasThing)
 						{
 							job3 = workGiver_Scanner.JobOnThing(pawn, targetInfo.Thing, false);
 						}
@@ -213,8 +167,7 @@ namespace AnimalJobs
 						{
 							job3 = workGiver_Scanner.JobOnCell(pawn, targetInfo.Cell, false);
 						}
-						bool flag15 = job3 != null;
-						if (flag15)
+						if (job3 != null)
 						{
 							return new ThinkResult(job3, this, new JobTag?(this.workGiverDef.tagToGive), false);
 						}
@@ -234,7 +187,6 @@ namespace AnimalJobs
 			return ThinkResult.NoJob;
 		}
 
-		// Token: 0x06000004 RID: 4 RVA: 0x000027C4 File Offset: 0x000009C4
 		private bool PawnCanUseWorkGiver(Pawn pawn, WorkGiver giver)
 		{
             if (!pawn.RaceProps.Animal)
@@ -245,12 +197,10 @@ namespace AnimalJobs
 			return !giver.ShouldSkip(pawn, false) && giver.MissingRequiredCapacity(pawn) == null;
 		}
 
-		// Token: 0x06000005 RID: 5 RVA: 0x000027F0 File Offset: 0x000009F0
 		private Job GiverTryGiveJobPrioritized(Pawn pawn, WorkGiver giver, IntVec3 cell)
 		{
-			bool flag = !this.PawnCanUseWorkGiver(pawn, giver);
 			Job result;
-			if (flag)
+			if (!this.PawnCanUseWorkGiver(pawn, giver))
 			{
 				result = null;
 			}
@@ -259,45 +209,29 @@ namespace AnimalJobs
 				try
 				{
 					Job job = giver.NonScanJob(pawn);
-					bool flag2 = job != null;
-					if (flag2)
-					{
-						return job;
-					}
+					if (job != null) return job;
 					WorkGiver_Scanner scanner = giver as WorkGiver_Scanner;
-					bool flag3 = scanner != null;
-					if (flag3)
+					if (scanner != null)
 					{
-						bool scanThings = giver.def.scanThings;
-						if (scanThings)
+						if (giver.def.scanThings)
 						{
 							Predicate<Thing> predicate = (Thing t) => !t.IsForbidden(pawn) && scanner.HasJobOnThing(pawn, t, false);
 							List<Thing> thingList = cell.GetThingList(pawn.Map);
 							for (int i = 0; i < thingList.Count; i++)
 							{
 								Thing thing = thingList[i];
-								bool flag4 = scanner.PotentialWorkThingRequest.Accepts(thing) && predicate(thing);
-								if (flag4)
+								if (scanner.PotentialWorkThingRequest.Accepts(thing) && predicate(thing))
 								{
 									Job job2 = scanner.JobOnThing(pawn, thing, false);
-									bool flag5 = job2 != null;
-									if (flag5)
-									{
-										job2.workGiverDef = giver.def;
-									}
+									if (job2 != null) job2.workGiverDef = giver.def;
 									return job2;
 								}
 							}
 						}
-						bool flag6 = giver.def.scanCells && !cell.IsForbidden(pawn) && scanner.HasJobOnCell(pawn, cell, false);
-						if (flag6)
+						if (giver.def.scanCells && !cell.IsForbidden(pawn) && scanner.HasJobOnCell(pawn, cell, false))
 						{
 							Job job3 = scanner.JobOnCell(pawn, cell, false);
-							bool flag7 = job3 != null;
-							if (flag7)
-							{
-								job3.workGiverDef = giver.def;
-							}
+							if (job3 != null) job3.workGiverDef = giver.def;
 							return job3;
 						}
 					}
@@ -318,7 +252,6 @@ namespace AnimalJobs
 			return result;
 		}
 
-		// Token: 0x04000001 RID: 1
 		public WorkGiverDef workGiverDef;
 	}
 }

@@ -6,19 +6,13 @@ using Verse.AI;
 
 namespace AnimalJobs
 {
-	// Token: 0x02000004 RID: 4
 	public class JobGiver_WPCutPlant : ThinkNode_JobGiver
 	{
-		// Token: 0x06000009 RID: 9 RVA: 0x00002ACC File Offset: 0x00000CCC
 		public override Job TryGiveJob(Pawn pawn)
 		{
 			Region region = pawn.GetRegion(RegionType.Set_Passable);
-			bool flag = region == null;
 			Job result;
-			if (flag)
-			{
-				result = null;
-			}
+			if (region == null) result = null;
 			else
 			{
 				for (int i = 0; i < 500; i++)
@@ -33,8 +27,7 @@ namespace AnimalJobs
 							if (enumerator.MoveNext())
 							{
 								Designation designation = enumerator.Current;
-								bool flag2 = designation.def == DesignationDefOf.CutPlant && pawn.CanReserve(plant, 1, -1, null, false);
-								if (flag2)
+								if (designation.def == DesignationDefOf.CutPlant && pawn.CanReserve(plant, 1, -1, null, false))
 								{
 									return new Job(JobDefOf.CutPlant, plant);
 								}

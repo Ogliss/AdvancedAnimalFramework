@@ -7,11 +7,8 @@ using Verse.AI;
 
 namespace AnimalJobs
 {
-	// Token: 0x0200000F RID: 15
 	public class JobDriver_WPConstructFinishFrame : JobDriver
 	{
-		// Token: 0x17000002 RID: 2
-		// (get) Token: 0x06000033 RID: 51 RVA: 0x00003D54 File Offset: 0x00001F54
 		private Frame Frame
 		{
 			get
@@ -20,7 +17,6 @@ namespace AnimalJobs
 			}
 		}
 
-		// Token: 0x06000034 RID: 52 RVA: 0x00003D80 File Offset: 0x00001F80
 		public override bool TryMakePreToilReservations(bool errorOnFailed)
 		{
 			Pawn pawn = this.pawn;
@@ -29,7 +25,6 @@ namespace AnimalJobs
 			return pawn.Reserve(targetA, job, 1, -1, null, errorOnFailed);
 		}
 
-		// Token: 0x06000035 RID: 53 RVA: 0x00003DB8 File Offset: 0x00001FB8
 		public override IEnumerable<Toil> MakeNewToils()
 		{
 			yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch).FailOnDespawnedNullOrForbidden(TargetIndex.A);
@@ -38,8 +33,7 @@ namespace AnimalJobs
 			{
 				IntVec3 root = build.actor.Position;
 				Region region = build.actor.GetRegion(RegionType.Set_Passable);
-				bool flag = region == null;
-				if (!flag)
+				if (region != null)
 				{
 					RegionTraverser.BreadthFirstTraverse(region, (Region from, Region r) => r.door == null || r.door.Open, delegate(Region r)
 					{
@@ -48,8 +42,7 @@ namespace AnimalJobs
 						{
 							Pawn pawn = list[i] as Pawn;
 							float num = Mathf.Clamp01(pawn.health.capacities.GetLevel(PawnCapacityDefOf.Hearing));
-							bool flag2 = num > 0f && pawn.Position.InHorDistOf(root, 15f * num);
-							if (flag2)
+							if (num > 0f && pawn.Position.InHorDistOf(root, 15f * num))
 							{
 								pawn.HearClamor(build.actor, ClamorDefOf.Construction);
 							}
@@ -65,36 +58,31 @@ namespace AnimalJobs
 				float num = 1f;
 				float value = actor.records.GetValue(RecordDefOf.ThingsConstructed);
 				float num2 = value / 20f;
-				bool flag = num2 < 1f;
-				if (flag)
+				if (num2 < 1f)
 				{
 					num2 = 1f;
 				}
-				bool flag2 = frame.Stuff != null;
-				if (flag2)
+				if (frame.Stuff != null)
 				{
 					num *= frame.Stuff.GetStatValueAbstract(StatDefOf.ConstructionSpeedFactor, null);
 				}
 				float workToBuild = frame.WorkToBuild;
-				bool flag3 = actor.Faction == Faction.OfPlayer && actor.RaceProps.Animal;
-				if (flag3)
+				if (actor.Faction == Faction.OfPlayer && actor.RaceProps.Animal)
 				{
-					bool flag4 = Rand.Value < 1f - Mathf.Pow(num2, num / workToBuild);
-					if (flag4)
+					if (Rand.Value < 1f - Mathf.Pow(num2, num / workToBuild))
 					{
 						frame.FailConstruction(actor);
 						this.ReadyForNextToil();
 						return;
 					}
 				}
-				bool flag5 = frame.def.entityDefToBuild is TerrainDef;
-				if (flag5)
+				if (frame.def.entityDefToBuild is TerrainDef)
 				{
 					this.Map.snowGrid.SetDepth(frame.Position, 0f);
 				}
 				frame.workDone += num;
 				bool flag6 = frame.workDone >= workToBuild;
-				if (flag6)
+				if (frame.workDone >= workToBuild)
 				{
 					frame.CompleteConstruction(actor);
 					this.ReadyForNextToil();
@@ -110,7 +98,6 @@ namespace AnimalJobs
 			yield break;
 		}
 
-		// Token: 0x0400000B RID: 11
 		private const int JobEndInterval = 5000;
 	}
 }

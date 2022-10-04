@@ -12,7 +12,6 @@ C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdvancedAnimalFramew
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdvancedAnimalFramework\Source\AnimalJobs\AnimalJobs\obj\Debug\AnimalJobs.csproj.CopyComplete
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdvancedAnimalFramework\Source\AnimalJobs\AnimalJobs\obj\Debug\AnimalJobs.dll
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdvancedAnimalFramework\Source\AnimalJobs\AnimalJobs\obj\Debug\AnimalJobs.pdb
-C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdvancedAnimalFramework\1.3\Source\AnimalJobs\AnimalJobs\obj\Debug\AnimalJobs.csprojAssemblyReference.cache
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdvancedAnimalFramework\1.3\Source\AnimalJobs\AnimalJobs\obj\Debug\AnimalJobs.AssemblyInfoInputs.cache
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdvancedAnimalFramework\1.3\Source\AnimalJobs\AnimalJobs\obj\Debug\AnimalJobs.AssemblyInfo.cs
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdvancedAnimalFramework\1.3\Source\AnimalJobs\AnimalJobs\obj\Debug\AnimalJobs.csproj.CoreCompileInputs.cache
@@ -21,3 +20,5 @@ C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdvancedAnimalFramew
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdvancedAnimalFramework\1.3\Assemblies\AnimalJobs.dll
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdvancedAnimalFramework\1.3\Assemblies\AnimalJobs.pdb
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdvancedAnimalFramework\1.3\Source\AnimalJobs\AnimalJobs\obj\Debug\AnimalJobs.csproj.CopyComplete
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdvancedAnimalFramework\1.3\Source\AnimalJobs\AnimalJobs\obj\Debug\AnimalJobs.csproj.AssemblyReference.cache
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdvancedAnimalFramework\1.3\Source\AnimalJobs\AnimalJobs\obj\Debug\AnimalJobs.GeneratedMSBuildEditorConfig.editorconfig

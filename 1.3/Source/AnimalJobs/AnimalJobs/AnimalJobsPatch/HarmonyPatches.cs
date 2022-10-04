@@ -13,11 +13,9 @@ using Verse.Sound;
 
 namespace AnimalJobs
 {
-	// Token: 0x0200002F RID: 47
 	[StaticConstructorOnStartup]
 	internal static class HarmonyPatches
 	{
-		// Token: 0x060000E9 RID: 233 RVA: 0x000080E4 File Offset: 0x000062E4
 		static HarmonyPatches()
 		{
 			Harmony harmony = new Harmony("rimworld.walkingproblem.animaljobspatch");
@@ -40,7 +38,7 @@ namespace AnimalJobs
 			HarmonyMethod harmonyMethod4 = new HarmonyMethod(typeof(HarmonyPatches).GetMethod("ButcherProducts_Prefix"));
 			HarmonyMethod prefix5 = new HarmonyMethod(typeof(HarmonyPatches).GetMethod("HandleBlockingThingJob_Prefix"));
 
-
+			/*
 			bool Fishin = ModsConfig.ActiveModsInLoadOrder.Any((ModMetaData m) => m.PackageIdPlayerFacing == "firefoxpdm.RainbeausFishing");
             if (Fishin)
             {
@@ -50,6 +48,7 @@ namespace AnimalJobs
 					FishingPatch(harmony);
 				}
 			}
+			*/
 			harmony.Patch(original, prefix, null, null, null);
 			harmony.Patch(original2, prefix2, null, null, null);
 			harmony.Patch(original3, prefix3, null, null, null);
@@ -57,7 +56,7 @@ namespace AnimalJobs
 			harmony.Patch(original5, prefix5, null, null, null);
 		}
 		public static WorkTypeDef Fishing = null;
-
+		/*
 		public static void FishingPatch(Harmony harmony)
         {
 
@@ -78,7 +77,7 @@ namespace AnimalJobs
 			}
 
 		}
-
+		*/
 		public static void CanConstruct_Prefix(ref bool __result, Thing t, Pawn p, bool checkSkills = true, bool forced = false)
 		{
 			if (p.kindDef.RaceProps.Animal)
@@ -103,31 +102,25 @@ namespace AnimalJobs
 			__result = false;
 		}
 
-		// Token: 0x060000EB RID: 235 RVA: 0x000083A0 File Offset: 0x000065A0
 		public static void HandleBlockingThingJob_Prefix(ref Job __result, Thing constructible, Pawn worker, bool forced = false)
 		{
 			Thing thing = GenConstruct.FirstBlockingThing(constructible, worker);
-			bool flag = thing == null;
-			if (flag)
+			if (thing == null)
 			{
 				__result = null;
 			}
-			bool flag2 = thing.def.category == ThingCategory.Plant && worker.RaceProps.Animal;
-			if (flag2)
+			if (thing.def.category == ThingCategory.Plant && worker.RaceProps.Animal)
 			{
-				bool flag3 = worker.CanReserveAndReach(thing, PathEndMode.ClosestTouch, worker.NormalMaxDanger(), 1, -1, null, forced);
-				if (flag3)
+				if (worker.CanReserveAndReach(thing, PathEndMode.ClosestTouch, worker.NormalMaxDanger(), 1, -1, null, forced))
 				{
 					__result = new Job(JobDefOf.CutPlant, thing);
 				}
 			}
 			else
 			{
-				bool flag4 = thing.def.category == ThingCategory.Item && worker.RaceProps.Animal;
-				if (flag4)
+				if (thing.def.category == ThingCategory.Item && worker.RaceProps.Animal)
 				{
-					bool everHaulable = thing.def.EverHaulable;
-					if (everHaulable)
+					if (thing.def.EverHaulable)
 					{
 						__result = HaulAIUtility.HaulAsideJobFor(worker, thing);
 					}
@@ -143,11 +136,9 @@ namespace AnimalJobs
 				}
 				else
 				{
-					bool flag5 = thing.def.category == ThingCategory.Building && worker.RaceProps.Animal;
-					if (flag5)
+					if (thing.def.category == ThingCategory.Building && worker.RaceProps.Animal)
 					{
-						bool flag6 = worker.CanReserveAndReach(thing, PathEndMode.Touch, worker.NormalMaxDanger(), 1, -1, null, forced);
-						if (flag6)
+						if (worker.CanReserveAndReach(thing, PathEndMode.Touch, worker.NormalMaxDanger(), 1, -1, null, forced))
 						{
 							__result = new Job(WPJobDefOf.WPDeconstruct, thing)
 							{
@@ -178,8 +169,6 @@ namespace AnimalJobs
 						Predicate<Thing> predicate = (Thing th) => ReservationUtility.CanReserve(actor, primaryTarget2, 1, -1, (ReservationLayerDef)null, false) && GenCollection.Any<ThingDefCountClass>(((IConstructible)th).MaterialsNeeded(), (Predicate<ThingDefCountClass>)((ThingDefCountClass need) => need.thingDef == actor.carryTracker.CarriedThing.def)) && ((th == primaryTarget2) | hasSpareItems2);
 						Thing nextTarget2 = GenClosest.ClosestThing_Global_Reachable(actor.Position, actor.Map, curJob.targetQueueB.Select(delegate (LocalTargetInfo targ)
 						{
-							//IL_0000: Unknown result type (might be due to invalid IL or missing references)
-							//IL_0001: Unknown result type (might be due to invalid IL or missing references)
 							LocalTargetInfo val2 = targ;
 							return val2.Thing;
 						}), (PathEndMode)2, TraverseParms.For(actor, (Danger)3, (TraverseMode)0, false), 99999f, predicate, (Func<Thing, float>)null);
@@ -198,8 +187,6 @@ namespace AnimalJobs
 						Predicate<Thing> predicate2 = (Thing th) => GenConstruct.CanConstruct(th, actor, false, false) && GenCollection.Any<ThingDefCountClass>(((IConstructible)th).MaterialsNeeded(), (Predicate<ThingDefCountClass>)((ThingDefCountClass need) => need.thingDef == actor.carryTracker.CarriedThing.def)) && ((th == primaryTarget) | hasSpareItems);
 						Thing nextTarget = GenClosest.ClosestThing_Global_Reachable(actor.Position, actor.Map, curJob.targetQueueB.Select(delegate (LocalTargetInfo targ)
 						{
-							//IL_0000: Unknown result type (might be due to invalid IL or missing references)
-							//IL_0001: Unknown result type (might be due to invalid IL or missing references)
 							LocalTargetInfo val = targ;
 							return val.Thing;
 						}), (PathEndMode)2, TraverseParms.For(actor, (Danger)3, (TraverseMode)0, false), 99999f, predicate2, (Func<Thing, float>)null);
@@ -214,35 +201,31 @@ namespace AnimalJobs
 			};
 			__result = toil;
 		}
-		// Token: 0x060000ED RID: 237 RVA: 0x00008550 File Offset: 0x00006750
+
 		public static void PawnAllowedToStartAnew_Prefix(ref bool __result, Pawn p)
 		{
-			bool animal = p.RaceProps.Animal;
-			if (animal)
+			if (p.RaceProps.Animal)
 			{
 				__result = true;
 			}
 		}
 
-		// Token: 0x060000EE RID: 238 RVA: 0x00008574 File Offset: 0x00006774
 		public static void DoRecipeWork_Prefix(ref Toil __result)
 		{
 			Toil toil = new Toil();
 			toil.initAction = delegate()
 			{
-				Log.Message("init delegated.");
+			//	Log.Message("init delegated.");
 				Pawn actor = toil.actor;
 				Job curJob = actor.jobs.curJob;
-				bool animal = actor.RaceProps.Animal;
-				if (animal)
+				if (actor.RaceProps.Animal)
 				{
-					Log.Message("I am in.");
+				//	Log.Message("I am in.");
 					JobDriver curDriver = actor.jobs.curDriver;
 					JobDriver_WPDoBill jobDriver_WPDoBill = curDriver as JobDriver_WPDoBill;
 					UnfinishedThing unfinishedThing = curJob.GetTarget(TargetIndex.B).Thing as UnfinishedThing;
 					jobDriver_WPDoBill.workLeft = curJob.bill.recipe.WorkAmountTotal(unfinishedThing.def);
-					bool flag = unfinishedThing != null;
-					if (flag)
+					if (unfinishedThing != null)
 					{
 						unfinishedThing.workLeft = jobDriver_WPDoBill.workLeft;
 					}
@@ -252,19 +235,17 @@ namespace AnimalJobs
 				}
 				else
 				{
-					Log.Message("I am here instead.");
+				//	Log.Message("I am here instead.");
 					JobDriver_DoBill jobDriver_DoBill = (JobDriver_DoBill)actor.jobs.curDriver;
 					UnfinishedThing unfinishedThing2 = curJob.GetTarget(TargetIndex.B).Thing as UnfinishedThing;
-					bool flag2 = unfinishedThing2 != null && unfinishedThing2.Initialized;
-					if (flag2)
+					if (unfinishedThing2 != null && unfinishedThing2.Initialized)
 					{
 						jobDriver_DoBill.workLeft = unfinishedThing2.workLeft;
 					}
 					else
 					{
 						jobDriver_DoBill.workLeft = curJob.bill.recipe.WorkAmountTotal(unfinishedThing2?.Stuff);
-						bool flag3 = unfinishedThing2 != null;
-						if (flag3)
+						if (unfinishedThing2 != null)
 						{
 							unfinishedThing2.workLeft = jobDriver_DoBill.workLeft;
 						}
@@ -276,7 +257,7 @@ namespace AnimalJobs
 			};
 			toil.tickAction = delegate()
 			{
-				Log.Message("tick delegated.");
+			//	Log.Message("tick delegated.");
 				Pawn actor = toil.actor;
 				Job curJob = actor.jobs.curJob;
 				JobDriver curDriver = actor.jobs.curDriver;
@@ -285,8 +266,7 @@ namespace AnimalJobs
 				{
 					JobDriver_WPDoBill jobDriver_WPDoBill = curDriver as JobDriver_WPDoBill;
 					UnfinishedThing unfinishedThing = curJob.GetTarget(TargetIndex.B).Thing as UnfinishedThing;
-					bool flag = unfinishedThing != null && unfinishedThing.Destroyed;
-					if (flag)
+					if (unfinishedThing != null && unfinishedThing.Destroyed)
 					{
 						actor.jobs.EndCurrentJob(JobCondition.Incompletable, true, true);
 						return;
@@ -294,53 +274,44 @@ namespace AnimalJobs
 					jobDriver_WPDoBill.ticksSpentDoingRecipeWork++;
 					curJob.bill.Notify_PawnDidWork(actor);
 					IBillGiverWithTickAction billGiverWithTickAction = toil.actor.CurJob.GetTarget(TargetIndex.A).Thing as IBillGiverWithTickAction;
-					bool flag2 = billGiverWithTickAction != null;
-					if (flag2)
+					if (billGiverWithTickAction != null)
 					{
 						billGiverWithTickAction.UsedThisTick();
 					}
 					float num = (curJob.RecipeDef.workSpeedStat != null) ? actor.GetStatValue(curJob.RecipeDef.workSpeedStat, true) : 1f;
 					Building_WorkTable building_WorkTable = jobDriver_WPDoBill.BillGiver as Building_WorkTable;
-					bool flag3 = building_WorkTable != null;
-					if (flag3)
+					if (building_WorkTable != null)
 					{
 						num *= building_WorkTable.GetStatValue(StatDefOf.WorkTableWorkSpeedFactor, true);
 					}
-					bool fastCrafting = DebugSettings.fastCrafting;
-					if (fastCrafting)
+					if (DebugSettings.fastCrafting)
 					{
 						num *= 30f;
 					}
 					jobDriver_WPDoBill.workLeft -= num;
-					bool flag4 = unfinishedThing != null;
-					if (flag4)
+					if (unfinishedThing != null)
 					{
 						unfinishedThing.workLeft = jobDriver_WPDoBill.workLeft;
 					}
 					actor.GainComfortFromCellIfPossible(false);
-					bool flag5 = jobDriver_WPDoBill.workLeft <= 0f;
-					if (flag5)
+					if (jobDriver_WPDoBill.workLeft <= 0f)
 					{
 						jobDriver_WPDoBill.ReadyForNextToil();
 					}
-					bool usesUnfinishedThing = curJob.bill.recipe.UsesUnfinishedThing;
-					if (usesUnfinishedThing)
+					if (curJob.bill.recipe.UsesUnfinishedThing)
 					{
 						int num2 = Find.TickManager.TicksGame - jobDriver_WPDoBill.billStartTick;
-						bool flag6 = num2 >= 3000 && num2 % 1000 == 0;
-						if (flag6)
+						if (num2 >= 3000 && num2 % 1000 == 0)
 						{
 							actor.jobs.CheckForJobOverride();
 						}
 					}
 				}
-				bool flag7 = !actor.RaceProps.Animal;
-				if (flag7)
+				if (!actor.RaceProps.Animal)
 				{
 					JobDriver_DoBill jobDriver_DoBill = (JobDriver_DoBill)actor.jobs.curDriver;
 					UnfinishedThing unfinishedThing2 = curJob.GetTarget(TargetIndex.B).Thing as UnfinishedThing;
-					bool flag8 = unfinishedThing2 != null && unfinishedThing2.Destroyed;
-					if (flag8)
+					if (unfinishedThing2 != null && unfinishedThing2.Destroyed)
 					{
 						actor.jobs.EndCurrentJob(JobCondition.Incompletable, true, true);
 					}
@@ -349,46 +320,38 @@ namespace AnimalJobs
 						jobDriver_DoBill.ticksSpentDoingRecipeWork++;
 						curJob.bill.Notify_PawnDidWork(actor);
 						IBillGiverWithTickAction billGiverWithTickAction2 = toil.actor.CurJob.GetTarget(TargetIndex.A).Thing as IBillGiverWithTickAction;
-						bool flag9 = billGiverWithTickAction2 != null;
-						if (flag9)
+						if (billGiverWithTickAction2 != null)
 						{
 							billGiverWithTickAction2.UsedThisTick();
 						}
-						bool flag10 = curJob.RecipeDef.workSkill != null && curJob.RecipeDef.UsesUnfinishedThing;
-						if (flag10)
+						if (curJob.RecipeDef.workSkill != null && curJob.RecipeDef.UsesUnfinishedThing)
 						{
 							actor.skills.GetSkill(curJob.RecipeDef.workSkill).Learn(0.11f * curJob.RecipeDef.workSkillLearnFactor, false);
 						}
 						float num3 = (curJob.RecipeDef.workSpeedStat != null) ? actor.GetStatValue(curJob.RecipeDef.workSpeedStat, true) : 1f;
 						Building_WorkTable building_WorkTable2 = jobDriver_DoBill.BillGiver as Building_WorkTable;
-						bool flag11 = building_WorkTable2 != null;
-						if (flag11)
+						if (building_WorkTable2 != null)
 						{
 							num3 *= building_WorkTable2.GetStatValue(StatDefOf.WorkTableWorkSpeedFactor, true);
 						}
-						bool fastCrafting2 = DebugSettings.fastCrafting;
-						if (fastCrafting2)
+						if (DebugSettings.fastCrafting)
 						{
 							num3 *= 30f;
 						}
 						jobDriver_DoBill.workLeft -= num3;
-						bool flag12 = unfinishedThing2 != null;
-						if (flag12)
+						if (unfinishedThing2 != null)
 						{
 							unfinishedThing2.workLeft = jobDriver_DoBill.workLeft;
 						}
 						actor.GainComfortFromCellIfPossible(false);
-						bool flag13 = jobDriver_DoBill.workLeft <= 0f;
-						if (flag13)
+						if (jobDriver_DoBill.workLeft <= 0f)
 						{
 							jobDriver_DoBill.ReadyForNextToil();
 						}
-						bool usesUnfinishedThing2 = curJob.bill.recipe.UsesUnfinishedThing;
-						if (usesUnfinishedThing2)
+						if (curJob.bill.recipe.UsesUnfinishedThing)
 						{
 							int num4 = Find.TickManager.TicksGame - jobDriver_DoBill.billStartTick;
-							bool flag14 = num4 >= 3000 && num4 % 1000 == 0;
-							if (flag14)
+							if (num4 >= 3000 && num4 % 1000 == 0)
 							{
 								actor.jobs.CheckForJobOverride();
 							}
@@ -420,32 +383,28 @@ namespace AnimalJobs
 			__result = toil;
 		}
 
-		// Token: 0x060000EF RID: 239 RVA: 0x00008640 File Offset: 0x00006840
 		public static bool CompleteConstruction_Prefix(Frame __instance, Pawn worker)
 		{
-			bool flag = !worker.RaceProps.Humanlike && !worker.GetType().Name.Contains("X2_AIRobot");
 			bool result;
-			if (flag)
+		//	Log.Message($"{worker}, Skills: {worker.skills != null}");
+			if (!worker.RaceProps.Humanlike && worker.skills == null)
 			{
 				Thing thing = __instance.holdingOwner.Take(__instance);
 				__instance.resourceContainer.ClearAndDestroyContents(DestroyMode.Vanish);
 				Map map = worker.Map;
 				__instance.Destroy(DestroyMode.Vanish);
-				bool flag2 = __instance.GetStatValue(StatDefOf.WorkToBuild, true) > 150f && __instance.def.entityDefToBuild is ThingDef && ((ThingDef)__instance.def.entityDefToBuild).category == ThingCategory.Building;
-				if (flag2)
+				if (__instance.GetStatValue(StatDefOf.WorkToBuild, true) > 150f && __instance.def.entityDefToBuild is ThingDef && ((ThingDef)__instance.def.entityDefToBuild).category == ThingCategory.Building)
 				{
 					SoundDefOf.Building_Complete.PlayOneShot(new TargetInfo(thing.Position, map, false));
 				}
 				ThingDef thingDef = __instance.def.entityDefToBuild as ThingDef;
 				Thing thing2 = null;
-				bool flag3 = thingDef != null;
-				if (flag3)
+				if (thingDef != null)
 				{
 					thing2 = ThingMaker.MakeThing(thingDef, thing.Stuff);
 					thing2.SetFactionDirect(thing.Faction);
 					CompQuality compQuality = thing2.TryGetComp<CompQuality>();
-					bool flag4 = compQuality != null;
-					if (flag4)
+					if (compQuality != null)
 					{
 						int relevantSkillLevel = 1;
 						QualityCategory q = QualityUtility.GenerateQualityCreatedByPawn(relevantSkillLevel, false);
@@ -453,11 +412,9 @@ namespace AnimalJobs
 						QualityUtility.SendCraftNotification(thing2, worker);
 					}
 					CompArt compArt = thing2.TryGetComp<CompArt>();
-					bool flag5 = compArt != null;
-					if (flag5)
+					if (compArt != null)
 					{
-						bool flag6 = compQuality == null;
-						if (flag6)
+						if (compQuality == null)
 						{
 							compArt.InitializeArt(ArtGenerationContext.Colony);
 						}
@@ -472,8 +429,7 @@ namespace AnimalJobs
 					FilthMaker.RemoveAllFilth(thing.Position, map);
 				}
 				worker.records.Increment(RecordDefOf.ThingsConstructed);
-				bool flag7 = thing2 != null && thing2.GetStatValue(StatDefOf.WorkToBuild, true) >= 9500f;
-				if (flag7)
+				if (thing2 != null && thing2.GetStatValue(StatDefOf.WorkToBuild, true) >= 9500f)
 				{
 					TaleRecorder.RecordTale(TaleDefOf.CompletedLongConstructionProject, new object[]
 					{
@@ -490,50 +446,38 @@ namespace AnimalJobs
 			return result;
 		}
 
-		// Token: 0x060000F0 RID: 240 RVA: 0x00008874 File Offset: 0x00006A74
 		public static void Destroy_Prefix(Thing __instance, DestroyMode mode = DestroyMode.Vanish)
 		{
-			bool flag = !Thing.allowDestroyNonDestroyable && !__instance.def.destroyable;
-			if (!flag)
+			if (!(!Thing.allowDestroyNonDestroyable && !__instance.def.destroyable))
 			{
-				bool destroyed = __instance.Destroyed;
-				if (!destroyed)
+				if (!__instance.Destroyed)
 				{
-					bool spawned = __instance.Spawned;
-					Map map = __instance.Map;
-					bool spawned2 = __instance.Spawned;
-					if (spawned2)
+					if (__instance.Spawned)
 					{
 						__instance.DeSpawn(mode);
 					}
-					sbyte value = Traverse.Create(typeof(Thing)).Field("mapIndexOrState").GetValue<sbyte>();
-					bool discardOnDestroyed = __instance.def.DiscardOnDestroyed;
-					if (discardOnDestroyed)
+                    //sbyte value = Traverse.Create(typeof(Thing)).Field("mapIndexOrState").GetValue<sbyte>();
+					if (__instance.def.DiscardOnDestroyed)
 					{
 						__instance.Discard(false);
 					}
 					CompExplosive compExplosive = __instance.TryGetComp<CompExplosive>();
-					bool flag2 = compExplosive != null && compExplosive.destroyedThroughDetonation;
-					bool flag3 = spawned && !flag2;
-					if (flag3)
+					if (__instance.Spawned && !(compExplosive != null && compExplosive.destroyedThroughDetonation))
 					{
-						GenLeaving.DoLeavingsFor(__instance, map, mode, null);
+						GenLeaving.DoLeavingsFor(__instance, __instance.Map, mode, null);
 					}
-					bool flag4 = __instance.holdingOwner != null;
-					if (flag4)
+					if (__instance.holdingOwner != null)
 					{
 						__instance.holdingOwner.Notify_ContainedItemDestroyed(__instance);
 					}
 					List<Map> maps = Find.Maps;
 					for (int i = 0; i < maps.Count; i++)
 					{
-						bool flag5 = __instance.def.category == ThingCategory.Mote;
-						if (flag5)
+						if (__instance.def.category == ThingCategory.Mote)
 						{
 							return;
 						}
-						bool flag6 = __instance.def.category != ThingCategory.Mote;
-						if (flag6)
+						if (__instance.def.category != ThingCategory.Mote)
 						{
 							maps[i].reservationManager.ReleaseAllForTarget(__instance);
 							maps[i].physicalInteractionReservationManager.ReleaseAllForTarget(__instance);
@@ -546,8 +490,7 @@ namespace AnimalJobs
 							maps[i].designationManager.RemoveAllDesignationsOn(__instance, false);
 						}
 					}
-					bool flag8 = !(__instance is Pawn);
-					if (flag8)
+					if (!(__instance is Pawn))
 					{
 						__instance.stackCount = 0;
 					}
@@ -555,32 +498,26 @@ namespace AnimalJobs
 			}
 		}
 
-		// Token: 0x060000F1 RID: 241 RVA: 0x00008A58 File Offset: 0x00006C58
 		public static void TryFindBestFoodSourceFor_Prefix(ref bool __result, Pawn getter, Pawn eater, bool desperate, out Thing foodSource, out ThingDef foodDef, bool canRefillDispenser = true, bool canUseInventory = true, bool allowForbidden = false, bool allowCorpse = true, bool allowSociallyImproper = false, bool allowHarvest = false)
 		{
-			bool flag = getter.RaceProps.ToolUser && getter.health.capacities.CapableOf(PawnCapacityDefOf.Manipulation);
 			bool animal = getter.RaceProps.Animal;
-			bool flag2 = !eater.IsTeetotaler();
+			bool drugUse = !eater.IsTeetotaler();
 			Thing thing = null;
 			if (canUseInventory)
 			{
-				bool flag3 = animal;
-				if (flag3)
+				if (animal)
 				{
 					thing = FoodUtility.BestFoodInInventory(getter, eater, FoodPreferability.MealAwful, FoodPreferability.MealLavish, 0f, false);
 				}
 			}
-			bool flag4 = getter == eater;
 			ThingDef thingDef;
-			Thing thing2 = FoodUtility.BestFoodSourceOnMap(getter, eater, desperate, out thingDef, FoodPreferability.MealLavish, flag4, flag2, allowCorpse, true, canRefillDispenser, allowForbidden, allowSociallyImproper, allowHarvest, false);
-			bool flag5 = thing == null && thing2 == null;
-			if (flag5)
+			Thing thing2 = FoodUtility.BestFoodSourceOnMap(getter, eater, desperate, out thingDef, FoodPreferability.MealLavish, getter == eater, drugUse, allowCorpse, true, canRefillDispenser, allowForbidden, allowSociallyImproper, allowHarvest, false);
+			if (thing == null && thing2 == null)
 			{
-				bool flag6 = canUseInventory && animal;
-				if (flag6)
+				if (canUseInventory && animal)
 				{
 					FoodPreferability minFoodPref = FoodPreferability.DesperateOnly;
-					bool allowDrug = flag2;
+					bool allowDrug = drugUse;
 					thing = FoodUtility.BestFoodInInventory(getter, eater, minFoodPref, FoodPreferability.MealLavish, 0f, allowDrug);
 					bool flag7 = thing != null;
 					if (flag7)
@@ -594,16 +531,14 @@ namespace AnimalJobs
 				foodDef = null;
 				__result = false;
 			}
-			bool flag8 = thing == null && thing2 != null;
-			if (flag8)
+			if (thing == null && thing2 != null)
 			{
 				foodSource = thing2;
 				foodDef = thingDef;
 				__result = true;
 			}
 			ThingDef finalIngestibleDef = FoodUtility.GetFinalIngestibleDef(thing, false);
-			bool flag9 = thing2 == null;
-			if (flag9)
+			if (thing2 == null)
 			{
 				foodSource = thing;
 				foodDef = finalIngestibleDef;
@@ -612,8 +547,7 @@ namespace AnimalJobs
 			float num = FoodUtility.FoodOptimality(eater, thing2, thingDef, (float)(getter.Position - thing2.Position).LengthManhattan, false);
 			float num2 = FoodUtility.FoodOptimality(eater, thing, finalIngestibleDef, 0f, false);
 			num2 -= 32f;
-			bool flag10 = num > num2;
-			if (flag10)
+			if (num > num2)
 			{
 				foodSource = thing2;
 				foodDef = thingDef;
@@ -624,7 +558,6 @@ namespace AnimalJobs
 			__result = true;
 		}
 
-		// Token: 0x060000F2 RID: 242 RVA: 0x00008C04 File Offset: 0x00006E04
 		public static bool ButcherProducts_Prefix(Pawn butcher, float efficiency, ref IEnumerable<Thing> __result, Corpse __instance)
 		{
 			if (butcher.RaceProps.Animal)
@@ -640,58 +573,7 @@ namespace AnimalJobs
 			return true;
 		}
 
-		public static bool WorkGiver_MineQuarry_JobOnThing_Prefix(Pawn pawn, Thing t, bool forced, ref Job __result)
-		{
-			if (pawn.RaceProps.Animal)
-			{
-				__result = WorkGiver_MineQuarry_MakeNewToils(pawn, t, forced);
-				return false;
-			}
-
-			return true;
-		}
-
-		public static Job WorkGiver_MineQuarry_MakeNewToils(Pawn pawn, Thing t, bool forced)
-		{
-			Building_Quarry quarry = t as Building_Quarry;
-			/*
-			if (!pawn.workSettings.WorkIsActive(QuarryDefOf.QuarryMining))
-			{
-				return null;
-			}
-			*/
-
-			// Make sure a permitted quarry is found, and that it has resources, and does not have too many workers
-			if (quarry == null || quarry.IsForbidden(pawn) || quarry.Depleted)
-			{
-				return null;
-			}
-
-			if (!quarry.Unowned && !quarry.AssignedPawns.Contains(pawn))
-			{
-				return null;
-			}
-
-			// Find a cell within the middle of the quarry to mine at
-			IntVec3 cell = IntVec3.Invalid;
-			CellRect rect = quarry.OccupiedRect().ContractedBy(quarry.WallThickness);
-			foreach (IntVec3 c in rect.Cells.InRandomOrder())
-			{
-				if (pawn.Map.reservationManager.CanReserve(pawn, c, 1))
-				{
-					cell = c;
-					break;
-				}
-			}
-			// If a cell wasn't found, fail
-			if (!cell.IsValid)
-			{
-				return null;
-			}
-
-			return new Job(QuarryDefOf.QRY_MineQuarry, cell);
-		}
-
+		/*
 		public static bool JobDriver_CatchFish_Prefix(JobDriver __instance, ref IEnumerable<Toil> __result)
 		{
 			JobDriver_CatchFish catchFish = __instance as JobDriver_CatchFish;
@@ -1582,6 +1464,6 @@ namespace AnimalJobs
 			yield return Toils_Reserve.Release(catchFish.fishingSpotIndex);
 			yield break;
 		}
-		
+		*/
 	}
 }

@@ -1,10 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuration>
   <Excluded>
-    <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdvancedAnimalFramework\.git</exclude>
-    <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdvancedAnimalFramework\Assemblies\AnimalJobs.pdb</exclude>
-    <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdvancedAnimalFramework\Assemblies\AnimalVehicles.pdb</exclude>
-    <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdvancedAnimalFramework\Assemblies\AnimalWeaponFramework.pdb</exclude>
-    <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdvancedAnimalFramework\Source</exclude>
+    <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdvancedAnimalFramework\1.2\Source</exclude>
+    <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AdvancedAnimalFramework\1.3\Source</exclude>
   </Excluded>
 </Configuration>
